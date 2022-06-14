@@ -1,2 +1,0 @@
-class Trend < ApplicationRecord
-end
