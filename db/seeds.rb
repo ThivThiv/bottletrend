@@ -3,23 +3,28 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
 
 puts "Cleaning database..."
 
-Batch.destroy_all
 Bottle.destroy_all
+Batch.destroy_all
 Domain.destroy_all
 Transaction.destroy_all
-User.destroy_all
+
+domain = Domain.create(name: "Need for seed")
+user = User.first
 
 puts "Creating 4 batches..."
 (0..4).each do
-  Batch.create(
+  Batch.create!(
+    name: Faker::Movie.quote,
     quantity: Faker::Number.within(range: 100..300),
     initial_price: Faker::Number.number(digits: 3),
-    domain_id: Faker::Number.within(range: 1..20),
+    domain: domain,
     description: Faker::Lorem.paragraph(sentence_count: 4),
     year: Faker::Number.within(range: 1990..2020),
     potential: Faker::Number.within(range: 1..5),
@@ -29,14 +34,14 @@ end
 
 puts "Creating 200 bottles..."
 (0..200).each do
-  Bottle.create(
-    batch_id: Faker::Number.within(range: 1..5)
+  Bottle.create!(
+    batch: Batch.first
   )
 end
 
 puts "Creating 4 domains..."
 (0..4).each do
-  Domain.create(
+  Domain.create!(
     year: Faker::Number.within(range: 1880..1980),
     name: Faker::Movie.quote,
     description: Faker::Lorem.paragraph(sentence_count: 4),
@@ -46,22 +51,11 @@ end
 
 puts "Creating 100 transactions..."
 (0..100).each do
-  Transaction.create(
+  Transaction.create!(
     quantity: Faker::Number.within(range: 1..2),
-    user_id: Faker::Number.within(range: 1..50),
-    bottle_id: Faker::Number.within(range: 1..200),
+    user: user,
+    bottle: Bottle.first,
     price: Faker::Number.number(digits: 4),
-  )
-end
-
-puts "Creating 50 users..."
-(0..50).each do
-  User.create(
-    email: Faker::Internet.email,
-    first_name: Faker::Name.unique.name,
-    last_name: Faker::Name.unique.name,
-    seller: false,
-    balance: Faker::Number.number(digits: 4),
   )
 end
 
