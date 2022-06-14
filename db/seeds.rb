@@ -76,3 +76,4 @@ puts "Finished!"
 ActiveRecord::Schema.define(version: 2022_06_14_125711) do
 
   # These are extensions that must be enabled in order to support this database
+end
