@@ -1,3 +1,3 @@
 class Domain < ApplicationRecord
-  has_many :batchs
+  has_many :batches
 end
