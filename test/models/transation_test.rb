@@ -1,6 +1,6 @@
 require "test_helper"
 
-class TrendTest < ActiveSupport::TestCase
+class TransationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

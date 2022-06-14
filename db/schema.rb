@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_14_102550) do
+ActiveRecord::Schema.define(version: 2022_06_14_105503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,14 +29,12 @@ ActiveRecord::Schema.define(version: 2022_06_14_102550) do
     t.text "description"
     t.integer "price"
     t.integer "year"
-    t.bigint "trend_id"
     t.bigint "domain_id"
     t.bigint "batch_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["batch_id"], name: "index_bottles_on_batch_id"
     t.index ["domain_id"], name: "index_bottles_on_domain_id"
-    t.index ["trend_id"], name: "index_bottles_on_trend_id"
   end
 
   create_table "domains", force: :cascade do |t|
@@ -47,11 +45,14 @@ ActiveRecord::Schema.define(version: 2022_06_14_102550) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "trends", force: :cascade do |t|
-    t.integer "potential"
-    t.integer "variation"
+  create_table "transations", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "user_id", null: false
+    t.bigint "bottle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["bottle_id"], name: "index_transations_on_bottle_id"
+    t.index ["user_id"], name: "index_transations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,4 +72,6 @@ ActiveRecord::Schema.define(version: 2022_06_14_102550) do
 
   add_foreign_key "batches", "domains"
   add_foreign_key "bottles", "batches"
+  add_foreign_key "transations", "bottles"
+  add_foreign_key "transations", "users"
 end
