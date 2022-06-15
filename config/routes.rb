@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get "domains/:id", to:"domains#show", as: "domain"
   get "batches", to:"batches#index"
   get "domains", to:"domains#index"
+  get "batches/:id/transactions", to:"transactions#new", as:"buy"
+  # post
 end
