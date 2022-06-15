@@ -1,6 +1,8 @@
+<h1>Toutes les cuvées</h1>
 <div class="container">
     <% @batches.each do |batch| %>
      <div class="card-item">
+        <img src="https://picsum.photos/44/44" alt="">
         <div class="card-infos">
           <%= batch.name%> <%= batch.year %>
           <%= batch.domain.name %>
@@ -12,7 +14,6 @@
         <div class="card-potential">
           Potentiel: <%= batch.potential%>
         </div>
-        <img src="https://picsum.photos/44/44" alt="">
         </div>
     <% end %>
 </div>

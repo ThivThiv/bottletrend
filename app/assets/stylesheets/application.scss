@@ -11,3 +11,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  h1 {
+    font-size: 40px !important;
+    font-weight: 600;
+  }
+}
