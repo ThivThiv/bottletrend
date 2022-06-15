@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'batches/:id', to: 'batches#show', as: 'bottle'
   get "domains/:id", to:"domains#show", as: "domain"
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get "/batches", to:"batches#index"
-  get "/domains", to:"domains#index"
+  get "batches", to:"batches#index"
+  get "domains", to:"domains#index"
 end

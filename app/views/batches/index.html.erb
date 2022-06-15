@@ -1,0 +1,9 @@
+
+
+  <% @batches.each do |batch| %>
+    <li><%= batch.name%> <%= batch.year %></li>
+    <li>Stock: <%= batch.quantity%></li>
+    <li>Price: <%= batch.initial_price%></li>
+    <li>Potentiel: <%= batch.potential%></li>
+    <li><%= batch.domain.name %></li>
+  <% end %>
