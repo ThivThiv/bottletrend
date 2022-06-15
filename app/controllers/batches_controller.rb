@@ -1,6 +1,5 @@
 class BatchesController < ApplicationController
-  before_action :set_batch, only: [:show]
-
+    before_action :set_batch, only: [:show]
   def index
     @batches = Batch.all
   end
@@ -10,6 +9,9 @@ class BatchesController < ApplicationController
   end
 
   private
+  
+    def batch_params
+    params.require(:batch).permit(:quantity, :initial_price, :domain_id, :name, :description, :year, :potential, :region)
 
   def set_batch
     @batch = Batch.find(params[:id])
