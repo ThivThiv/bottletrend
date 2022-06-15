@@ -24,6 +24,8 @@ class PagesController < ApplicationController
     @batches_with_quantity = batches.map do |batch|
       {
         batch_name: batch.name,
+        domain_name: batch.domain.name,
+        price: batch.initial_price,
         quantity: @user.batch_quantity(batch)
       }
     end
@@ -31,6 +33,7 @@ class PagesController < ApplicationController
     @batches_on_resale_with_quantity = batches_on_resale.map do |batch|
       {
         batch_name: batch.name,
+        domain_name: batch.domain.name,
         quantity: @user.batch_quantity(batch)
       }
     end
