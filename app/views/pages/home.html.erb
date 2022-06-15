@@ -9,11 +9,23 @@
 
 <h2>Les meilleures opportunités</h2>
 <p>Les bouteilles du moment selon nos experts</p>
-<%= link_to "Voir plus", batches_path %>
+<ul>
+<% @batches.first(5).each do |batch| %>
+<li><%= link_to "product#{batch.id}", bottle_path(batch)%></li>
+<% end %>
+<li><%= link_to "Voir plus", batches_path %></li>
+</ul>
+<br>
 
 <h2>Ils ont le vent en poupe !</h2>
 <p>Les domaines les plus en vogue. Leurs bouteilles sont très bien cotées !</p>
-<%= link_to "Voir plus", domains_path %>
+<ul>
+<% @domains.first(5).each do |domain| %>
+<li><%= link_to "domain#{domain.id}", domain_path(domain) %></li>
+<% end %>
+<li><%= link_to "Voir plus", domains_path %></li>
+</ul>
+<br>
 
 <h2>Constituez votre collection de bouteilles</h2>
 <p>Commencez à investir sur vos bouteilles favorites avec Bottle Trends en suivant les étapes ci dessous. </p>
