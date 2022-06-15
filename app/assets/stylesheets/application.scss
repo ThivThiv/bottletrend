@@ -13,8 +13,24 @@
 @import "pages/index";
 
 body {
-  h1 {
+  p {
     font-size: 40px !important;
     font-weight: 600;
   }
+
+  h1 {
+    font-size: 24px !important;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 20px !important;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 14px !important;
+    font-weight: 600;
+  }
+
 }
