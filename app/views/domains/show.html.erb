@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>A specific batch</h1>
+  <div>
+    <ul>
+      <li>Nom du domaine : <%= @domain.name %>
+      <li>Année de création : <%= @domain.year %></li>
+      <li>Description : <br><%= @domain.description %></li>
+    </ul>
+
+  <h2>Leurs bouteilles</h2>
+  <ul>
+    <% @domain.batches.each do |batch| %>
+      <li><%= link_to "#{batch.name}", bottle_path(batch) %></li>
+    <% end %>
+  </ul>
+</div>
