@@ -7,35 +7,10 @@ class PagesController < ApplicationController
   end
 
   def collection
-    @user = current_user
-    batches = []
-    batches_on_resale = []
+    @private_bottles = current_user.bottles.group(:batch).where(on_resale: true).count
+    @private_batches = @private_bottles.keys
 
-    @user.bottles.each do |bottle|
-      if bottle.on_resale
-        batches_on_resale << bottle.batch
-      else
-        batches << bottle.batch
-      end
-    end
-    batches.uniq!
-    batches_on_resale.uniq!
-
-    @batches_with_quantity = batches.map do |batch|
-      {
-        batch_name: batch.name,
-        domain_name: batch.domain.name,
-        price: batch.initial_price,
-        quantity: @user.batch_quantity(batch)
-      }
-    end
-
-    @batches_on_resale_with_quantity = batches_on_resale.map do |batch|
-      {
-        batch_name: batch.name,
-        domain_name: batch.domain.name,
-        quantity: @user.batch_quantity(batch)
-      }
-    end
+    @on_resale_bottles = current_user.bottles.group(:batch).where(on_resale: false).count
+    @on_resale_batches = @on_resale_bottles.keys
   end
 end
