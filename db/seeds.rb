@@ -10,10 +10,10 @@ require 'faker'
 
 puts "Cleaning database..."
 
-Bottle.destroy_all
-Batch.destroy_all
-Domain.destroy_all
-Transaction.destroy_all
+# Domain.destroy_all
+# Bottle.destroy_all
+# Batch.destroy_all
+# Transaction.destroy_all
 
 domain = Domain.create(name: "Need for seed")
 user = User.first
