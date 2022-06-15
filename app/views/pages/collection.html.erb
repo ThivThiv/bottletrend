@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Ma collection</h1>
+  <div>
+    Dashboard
+  </div>
+  <div>
+    <h2>Mes possessions</h2>
+    <ul>
+      <% @batches_with_quantity.each do |batch| %>
+        <li>qty = <%= batch[:quantity] %></li>
+        <li>name = <%= batch[:batch_name] %></li>
+      <% end %>
+    </ul>
+
+    <h2>Mes ventes</h2>
+    <ul>
+      <% @batches_on_resale_with_quantity.each do |batch| %>
+        <li>qty = <%= batch[:quantity] %></li>
+        <li>name = <%= batch[:batch_name] %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
