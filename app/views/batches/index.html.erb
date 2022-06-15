@@ -4,15 +4,15 @@
      <div class="card-item">
         <img src="https://picsum.photos/44/44" alt="">
         <div class="card-infos">
-          <%= batch.name%> <%= batch.year %>
-          <%= batch.domain.name %>
+          <h3><%= batch.name%> <%= batch.year %></h3>
+          <p><%= batch.domain.name %></p>
         </div>
         <div class="card-details">
-          Stock: <%= batch.quantity%>
-          Price: <%= batch.initial_price%>
+          <h3>Price: <%= batch.initial_price%></h3>
+          <p>Stock: <%= batch.quantity%></p>
         </div>
-        <div class="card-potential">
-          Potentiel: <%= batch.potential%>
+        <h3><div class="card-potential"></h3>
+          <%= batch.potential%>
         </div>
         </div>
     <% end %>
