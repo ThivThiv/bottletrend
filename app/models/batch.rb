@@ -1,4 +1,4 @@
 class Batch < ApplicationRecord
-  has_many :bottle
+  has_many :bottles
   belongs_to :domain
 end
