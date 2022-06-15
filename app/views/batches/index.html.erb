@@ -1,9 +1,18 @@
-
-
-  <% @batches.each do |batch| %>
-    <li><%= batch.name%> <%= batch.year %></li>
-    <li>Stock: <%= batch.quantity%></li>
-    <li>Price: <%= batch.initial_price%></li>
-    <li>Potentiel: <%= batch.potential%></li>
-    <li><%= batch.domain.name %></li>
-  <% end %>
+<div class="container">
+    <% @batches.each do |batch| %>
+     <div class="card-item">
+        <div class="card-infos">
+          <%= batch.name%> <%= batch.year %>
+          <%= batch.domain.name %>
+        </div>
+        <div class="card-details">
+          Stock: <%= batch.quantity%>
+          Price: <%= batch.initial_price%>
+        </div>
+        <div class="card-potential">
+          Potentiel: <%= batch.potential%>
+        </div>
+        <img src="https://picsum.photos/44/44" alt="">
+        </div>
+    <% end %>
+</div>
