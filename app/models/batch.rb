@@ -1,5 +1,5 @@
 class Batch < ApplicationRecord
-  has_many :bottles
+  has_many :bottles, dependent: :destroy
   belongs_to :domain
 
 
