@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>A specific batch</h1>
+  <div>
+    <ul>
+      <li>Cuvée: <%= @batch.name %> (<%= @batch.year %>) | Région: <%= @batch.region %></li>
+      <li>Domaine: <%= @domain.name %></li>
+      <li>Description: <%= @batch.description %></li>
+      <li>Stock: <%= @batch.quantity %></li>
+      <li>Prix: <%= @batch.initial_price %>€</li>
+      <li>Potentiel: <%= @batch.potential %>/5</li>
+    </ul>
+    <% if @batch.quantity.nil? %>
+    <button>
+      <%= link_to 'Vendre', "#"  %>
+    </button>
+    <% else %>
+    <button>
+      <%= link_to 'Acheter', '#' %>
+    </button>
+    <% end %>
+  </div>
+</div>
