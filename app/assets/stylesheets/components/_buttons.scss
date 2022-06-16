@@ -6,3 +6,36 @@
   justify-content: center;
   align-items: center;
 }
+
+.btn-jaune {
+  border-radius: 50px;
+  background-color: $jaune;
+  padding: 10px 35px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.btn-mauve {
+  border-radius: 50px;
+  background-color: $mauve;
+  padding: 10px 35px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.btn-bleuciel {
+  border-radius: 50px;
+  background-color: $bleuciel;
+  padding: 10px 35px;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.btn-in-list {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}

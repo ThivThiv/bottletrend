@@ -1,44 +1,48 @@
 <%= render 'shared/searchbar' %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <div class="container">
-    <h1>H1 Banner</h1>
-    <p>Paragraphe banner</p>
-    <a class="btn btn-flat" href="#">Bouton</a>
+<div class="home-banner">
+  <div class="content-banner">
+    <h1>Investissez sur vos bouteilles grâce à Bottle Trends</h1>
+    <div class="btn-in-list">
+      <a class="btn-mauve" href="#">Bouton</a>
+      <a class="btn-jaune" href="#">Bouton</a>
+    </div>
   </div>
 </div>
 
+<div class="container">
+  <div class="top-5">
+    <h2>Les meilleures opportunités</h2>
+    <p>Les bouteilles du moment selon nos experts</p>
+    <ul>
+    <% @batches.first(5).each do |batch| %>
+    <li><%= link_to "#{batch.name}", bottle_path(batch)%></li>
+    <% end %>
+    <li><%= link_to "Voir plus", batches_path %></li>
+    </ul>
+  </div>
 
-<h2>Les meilleures opportunités</h2>
-<p>Les bouteilles du moment selon nos experts</p>
-<ul>
-<% @batches.first(5).each do |batch| %>
-<li><%= link_to "#{batch.name}", bottle_path(batch)%></li>
-<% end %>
-<li><%= link_to "Voir plus", batches_path %></li>
-</ul>
-<br>
+  <h2>Ils ont le vent en poupe !</h2>
+  <p>Les domaines les plus en vogue. Leurs bouteilles sont très bien cotées !</p>
+  <ul>
+  <% @domains.first(5).each do |domain| %>
+  <li><%= link_to "#{domain.name}", domain_path(domain) %></li>
+  <% end %>
+  <li><%= link_to "Voir plus", domains_path %></li>
+  </ul>
+  <br>
 
-<h2>Ils ont le vent en poupe !</h2>
-<p>Les domaines les plus en vogue. Leurs bouteilles sont très bien cotées !</p>
-<ul>
-<% @domains.first(5).each do |domain| %>
-<li><%= link_to "#{domain.name}", domain_path(domain) %></li>
-<% end %>
-<li><%= link_to "Voir plus", domains_path %></li>
-</ul>
-<br>
+  <h2>Constituez votre collection de bouteilles</h2>
+  <p>Commencez à investir sur vos bouteilles favorites avec Bottle Trends en suivant les étapes ci dessous. </p>
+  <img src="#" alt="">
 
-<h2>Constituez votre collection de bouteilles</h2>
-<p>Commencez à investir sur vos bouteilles favorites avec Bottle Trends en suivant les étapes ci dessous. </p>
-<img src="#" alt="">
+  <h2>Inscrivez-vous</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
 
-<h2>Inscrivez-vous</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
+  <h2>Consultez les bouteilles disponibles</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
 
-<h2>Consultez les bouteilles disponibles</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
+  <h2>Commencez à investir</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
 
-<h2>Commencez à investir</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
-
-<%= link_to "Commencez", batches_path, class:"btn btn-danger" %>
+  <%= link_to "Commencez", batches_path, class:"btn btn-danger" %>
+</div>
