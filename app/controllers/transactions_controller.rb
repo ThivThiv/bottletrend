@@ -23,10 +23,8 @@ class TransactionsController < ApplicationController
     @batch = Batch.find(params[:batch_id])
     quantity.to_i.times do
        bottles << Bottle.create(batch: @batch)
-       @batch.quantity -= 1
        @batch.save
     end
-    raise
     return bottles
   end
 
