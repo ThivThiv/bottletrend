@@ -1,8 +1,8 @@
 class DomainsController < ApplicationController
   before_action :set_domain, only: [:show]
-  # def index
-  #   @domains = Domain.all
-  # end
+  def index
+    @domains = Domain.all
+  end
 
   def show
   end
