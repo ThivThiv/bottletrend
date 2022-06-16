@@ -18,6 +18,7 @@ class TransactionsController < ApplicationController
   end
 
   private
+
   def create_bottles(quantity)
     bottles = []
     @batch = Batch.find(params[:batch_id])

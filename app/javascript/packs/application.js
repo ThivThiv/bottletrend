@@ -8,9 +8,15 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 import "controllers"
 import "bootstrap"
+import { maxQuantity } from "../plugins/max_quantity"
+
+/* document.addEventListener("turbolinks:load", () => {
+  maxQuantity();
+}) */
