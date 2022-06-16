@@ -1,6 +1,83 @@
+.navbar {
+  height: 60px;
+  background-color: white;
+  padding: 0px !important;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.188);
+  transition: all 0.3s ease 0s;
+  z-index: 10;
+}
+
+.sticky {
+  position: fixed !important;
+  bottom: 0;
+  width: 100%;
+}
+
+// Navbar bottom
+.nav-btn {
+  text-align: center;
+  i {
+    color: lightgray;
+  }
+
+  &:active {
+    font-weight: bold;
+  }
+}
+
+#home-btn.active {
+  i {
+    color: $mauve;
+  }
+}
+
+#trade-btn.active {
+  i {
+    color: $jaune;
+  }
+}
+
+#collection-btn.active {
+  i {
+    color: $bleuciel;
+  }
+}
+
+
+.navbar-buttons {
+  height: 44px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+}
+
+.nav-btn-img {
+  color: rgb(50, 50, 50);
+  font-size: 24px;
+}
+
+
+
+// ----------------------------
+// ----------------------------
+// ----------------------------
+// ----------------------------
+// ----------------------------
+// ----------------------------
+
+
+
+// Navbar search
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.188);
+  position: sticky!important;
+  top: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +86,26 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
+
+.log {
+  li {
+    padding: 0px;
+  }
+}
+.dropdown-item {
+    text-decoration: none;
+    color: black;
 }

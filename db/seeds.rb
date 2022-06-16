@@ -26,7 +26,7 @@ puts "Creating 4 domains..."
 (0..4).each do
   Domain.create!(
     year: Faker::Number.within(range: 1880..1980),
-    name: Faker::Movie.quote,
+    name: Faker::Quotes::Chiquito.term ,
     description: Faker::Lorem.paragraph(sentence_count: 4),
     popularity: Faker::Number.within(range: 1..5),
   )
@@ -35,7 +35,7 @@ end
 (0..4).each do |n|
   puts "Creating batch #{n + 1}"
   batch = Batch.create!(
-    name: Faker::Movie.quote,
+    name: Faker::Artist.name,
     quantity: Faker::Number.within(range: 100..300),
     initial_price: Faker::Number.number(digits: 3),
     domain: Domain.last,

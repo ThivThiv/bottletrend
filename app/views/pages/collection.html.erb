@@ -1,23 +1,29 @@
 <div class="container">
   <h1>Ma collection</h1>
-  <div>
-    Dashboard
-  </div>
-  <div>
-    <h2>Mes possessions</h2>
-    <ul>
-      <% @batches_with_quantity.each do |batch| %>
-        <li>qty = <%= batch[:quantity] %></li>
-        <li>name = <%= batch[:batch_name] %></li>
-      <% end %>
-    </ul>
+  <section class="vgv">
+    <h2>Dashboard</h2>
+  </section>
 
-    <h2>Mes ventes</h2>
-    <ul>
-      <% @batches_on_resale_with_quantity.each do |batch| %>
-        <li>qty = <%= batch[:quantity] %></li>
-        <li>name = <%= batch[:batch_name] %></li>
-      <% end %>
-    </ul>
-  </div>
+<%# Faire partial %>
+  <section>
+    <h3>Mes possessions</h3>
+    <% @private_batches.each do |batch| %>
+      <div class="card">
+        <h4><%= batch.name %></h4>
+        <h5><%= batch.domain.name %></h5>
+        <p>Quantité: <%= q = @private_bottles[batch] %></p>
+        <p><%= batch.initial_price * q %>€</p>
+      </div>
+    <% end %>
+
+    <h3>Mes ventes</h3>
+    <% @on_resale_batches.each do |batch| %>
+      <div class="card">
+        <h4><%= batch.name %></h4>
+        <h5><%= batch.domain.name %></h5>
+        <p>Quantité: <%= q = @on_resale_bottles[batch] %></p>
+        <p><%= batch.initial_price * q %>€</p>
+      </div>
+    <% end %>
+  </section>
 </div>
