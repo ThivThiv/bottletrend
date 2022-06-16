@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+
 ruby '3.0.3'
 
 #search bar
 gem 'pg_search', '~> 2.3.0'
 # Creation seeds
+gem 'cloudinary', '~> 1.16.0'
 gem 'faker'
 # User authentication
 gem 'devise'
