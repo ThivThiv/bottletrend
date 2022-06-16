@@ -1,0 +1,31 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid search">
+    <%= form_tag batches_path, method: :get do %>
+      <div class="search-bar">
+        <div style="margin-right: 4px">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Un domaine, une cuvée..."
+          %>
+        </div>
+        <div>
+          <%= submit_tag "Search", class: "btn btn-dark btn-search d-none" %>
+        </div>
+      </div>
+    <% end %>
+    <div class="log">
+      <% if user_signed_in? %>
+        <div class="">
+          <%= link_to destroy_user_session_path, method: :delete, class: "nav-link blacktext" do %>
+            <%= image_tag "avatar.webp", class: "avatar"%>
+          <% end %>
+        </div>
+      <% else %>
+        <li class="nav-link">
+          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </div>
+  </div>
+</div>
