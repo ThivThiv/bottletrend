@@ -16,7 +16,7 @@ class BatchesController < ApplicationController
   private
 
   def batch_params
-    params.require(:batch).permit(:quantity, :initial_price, :domain_id, :name, :description, :year, :potential, :region)
+    params.require(:batch).permit(:quantity, :initial_price, :domain_id, :name, :description, :year, :potential, :region, :photo)
   end
 
   def set_batch

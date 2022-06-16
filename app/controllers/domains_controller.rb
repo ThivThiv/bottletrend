@@ -12,4 +12,8 @@ class DomainsController < ApplicationController
   def set_domain
     @domain = Domain.find(params[:id])
   end
+
+  def batch_params
+    params.require(:batch).permit(:photo)
+  end
 end
