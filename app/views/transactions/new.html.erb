@@ -1,13 +1,21 @@
-<h1>Acheter une bouteille</h1>
+<div class="transaction-container" data-controller= "max-quantity">
 
-<h3><%= @batch.name %></h3>
-<h4><%= @batch.year %></h4>
-<h4><%= @batch.potential %></h4>
+    <h1>Acheter une bouteille</h1>
 
-<div>
-  <%= simple_form_for([@batch, @transaction]) do |f| %>
-    <%= f.input :quantity %>
-    <%= f.button :submit, class: "btn btn-search" %>
-    <% end %>
-  </div>
+    <h3><%= @batch.name %></h3>
+    <h4><%= @batch.year %></h4>
+    <h4><%= @batch.potential %></h4>
+    <h4 class= "available-stock" data-max-quantity-target= "stock"><%= @batch.available_stock %></h4>
+
+    <div>
+      <%= simple_form_for([@batch, @transaction]) do |f| %>
+        <%= f.input :quantity, input_html: { data: { max_quantity_target: :input,  action: "input->max-quantity#available"} } %>
+         <div class="flash flash-danger alert-dismissible fade show d-none"   role="alert" data-max-quantity-target="alert">
+          <span><strong>Oops!</strong> 😱 Not enough stock available.</span>
+        </div>
+        <%= f.button :submit, class: "btn btn-search" %>
+        <% end %>
+      </div>
+
+
 </div>
