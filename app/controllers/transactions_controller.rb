@@ -1,17 +1,36 @@
 class TransactionsController < ApplicationController
+
   def new
+    @batch = Batch.find(params[:batch_id])
+    @transaction = Transaction.new
   end
 
+
   def create
-    @batch = Batch.find(params[:batch_id])
-    @transaction = Transaction.new(transaction_params)
-    @transaction.batch = @batch
-    @transaction.user = current_user
+    @bottles = create_bottles(params[:transaction][:quantity])
+    @bottles.each do |bottle|
+      @transaction = Transaction.new
+      @transaction.user = current_user
+      @transaction.bottle = bottle
+      @transaction.save
+    end
+    redirect_to collection_path
   end
 
   private
+  def create_bottles(quantity)
+    bottles = []
+    @batch = Batch.find(params[:batch_id])
+    quantity.to_i.times do
+       bottles << Bottle.create(batch: @batch)
+       @batch.quantity -= 1
+       @batch.save
+    end
+    raise
+    return bottles
+  end
 
   def transaction_params
-    params.require(:transaction).permit(:quantity, :batch_id)
+    params.require(:transaction).permit(:quantity, :bottle_id, :user_id)
   end
 end

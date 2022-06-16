@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   end
 
   def collection
+    console
     @user = current_user
     batches = []
     batches_on_resale = []
