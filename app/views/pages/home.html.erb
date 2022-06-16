@@ -1,44 +1,96 @@
 <%= render 'shared/searchbar' %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
-  <div class="container">
-    <h1>H1 Banner</h1>
-    <p>Paragraphe banner</p>
-    <a class="btn btn-flat" href="#">Bouton</a>
+<div class="home-banner">
+  <div class="content-banner">
+    <h1>Investissez sur vos bouteilles grâce à Bottle Trends</h1>
+    <div class="btn-in-list">
+      <a class="btn-mauve" href="#">Bouton</a>
+      <a class="btn-jaune" href="#">Bouton</a>
+    </div>
   </div>
 </div>
 
+<div class="container">
+  <div class="section">
+    <h2>Les meilleures opportunités</h2>
+    <p>Les bouteilles du moment selon nos experts</p>
 
-<h2>Les meilleures opportunités</h2>
-<p>Les bouteilles du moment selon nos experts</p>
-<ul>
-<% @batches.first(5).each do |batch| %>
-<li><%= link_to "#{batch.name}", bottle_path(batch)%></li>
-<% end %>
-<li><%= link_to "Voir plus", batches_path %></li>
-</ul>
-<br>
+    <% @batches.first(5).each do |batch| %>
+      <%= link_to bottle_path(batch), class:"text-decoration-none" do %>
+        <div class="card-element">
+          <div class="card-avatar">
+            <%= batch.photo.attached? ? cl_image_tag(batch.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
+          </div>
 
-<h2>Ils ont le vent en poupe !</h2>
-<p>Les domaines les plus en vogue. Leurs bouteilles sont très bien cotées !</p>
-<ul>
-<% @domains.first(5).each do |domain| %>
-<li><%= link_to "#{domain.name}", domain_path(domain) %></li>
-<% end %>
-<li><%= link_to "Voir plus", domains_path %></li>
-</ul>
-<br>
+          <div class="card-description">
+            <h3><%= truncate(batch.name, length: 40)%> (<%= batch.year %>)</h3>
+            <p><%= batch.domain.name %></p>
+          </div>
 
-<h2>Constituez votre collection de bouteilles</h2>
-<p>Commencez à investir sur vos bouteilles favorites avec Bottle Trends en suivant les étapes ci dessous. </p>
-<img src="#" alt="">
+          <div class="batch-card-price">
+            <p>230€</p>
+          </div>
 
-<h2>Inscrivez-vous</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
+          <div class="batch-card-trend">
+            <p>+30%</p>
+            <p>+45€</p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
 
-<h2>Consultez les bouteilles disponibles</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
+    <div class="section-cta">
+      <a class="btn-mauve" href="/batches">Toutes les cuvées</a>
+    </div>
+  </div>
 
-<h2>Commencez à investir</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
+  <div class="section">
+    <h2>Ils ont le vent en poupe !</h2>
+    <p>Les domaines les plus en vogue. Leurs bouteilles sont très bien cotées !</p>
 
-<%= link_to "Commencez", batches_path, class:"btn btn-danger" %>
+    <% @domains.first(5).each do |domain| %>
+      <%= link_to domain_path(domain), class:"text-decoration-none" do %>
+        <div class="card-element">
+          <div class="card-avatar">
+            <%= domain.photo.attached? ? cl_image_tag(domain.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80", width: 50, heigth: 50, crop: :fill) %>
+          </div>
+
+          <div class="card-description">
+            <h3><%= truncate(domain.name, length: 40)%></h3>
+            <p><%= domain.batches.first.region %></p>
+          </div>
+
+          <div class="domain-card-year">
+            <p><%= domain.year %></p>
+          </div>
+
+          <div class="domain-card-trend">
+            <p><i class="fa-solid fa-arrow-trend-up"></i></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="section-cta">
+      <a class="btn-mauve" href="/domains">Touts les domaines</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <h2>Constituez votre collection de bouteilles</h2>
+    <p>Commencez à investir sur vos bouteilles favorites avec Bottle Trends en suivant les étapes ci dessous. </p>
+    <img src="#" alt="">
+
+    <h2>Inscrivez-vous</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
+
+    <h2>Consultez les bouteilles disponibles</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
+
+    <h2>Commencez à investir</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
+
+    <%= link_to "Commencez", batches_path, class:"btn btn-danger" %>
+  </div>
+</div>

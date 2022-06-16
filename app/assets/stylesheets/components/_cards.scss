@@ -24,6 +24,78 @@
   width: 100%;
 }
 
+// Pour la Home
+.card-element {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: white;
+  box-shadow: #c9c9c9 2px 2px 10px -2px;
+  display: flex;
+  color: black;
+  height: 70px;
+  border-radius: 8px;
+  column-gap: 8px;
+
+  p, h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+}
+
+.card-avatar {
+  width: 20%;
+  display:flex;
+  justify-content: center;
+
+  img {
+    border-radius: 50px;
+  }
+}
+
+.card-description {
+  text-align: left;
+  width: 50%;
+
+  p {
+    font-size: 10px;
+    font-weight: 400;
+  }
+}
+
+.batch-card-price {
+  width: 15%;
+  text-align: right;
+  border-left: 1px solid $light-gray;
+}
+
+.domain-card-year {
+  width: 15%;
+  text-align: right;
+  border-left: 1px solid $light-gray;
+}
+
+.batch-card-trend {
+  width: 15%;
+  text-align: right;
+  border-left: 1px solid $light-gray;
+
+  p:last-child {
+    font-size: 10px;
+    font-weight: 400;
+  }
+}
+
+.domain-card-trend {
+  width: 15%;
+  border-left: 1px solid $light-gray;
+  p {
+    text-align: center;
+    color: $vert;
+    font-size: 28px;
+  }
+
 .card-item:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
