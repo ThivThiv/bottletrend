@@ -1,0 +1,27 @@
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1632280071595-b13521457242?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)">
+  <h1>Nos cuvées</h1>
+</div>
+
+<div class="container">
+  <div class="card-item">
+    <% @batches_of_domain.each do |watch| %>
+      <%= link_to watch_path(watch) do %>
+        <div class="card-product">
+          <div>
+            <%= watch.photo.attached? ? cl_image_tag(watch.photo.key, height: 480, width: 390, crop: :fill) : image_tag("https://imgs.search.brave.com/95uqrX0sPNStAH-hNb9IC1Dq-eZQGRKKEUFV6PMDY_U/rs:fit:1200:1200:1/g:ce/aHR0cDovL3d3dy5k/cm9kZC5jb20vaW1h/Z2VzMTQvd2hpdGUx/LmpwZw", height: 480, width: 390, crop: :fill) %>
+          </div>
+          <div class="card-product-infos">
+            <div>
+              <h2><%= watch.brand.upcase %></h2>
+              <h3><%= watch.model %></h3>
+              <p><%= watch.description %></p>
+            </div>
+            <div class="card-price">
+              <h4><strong><%= watch.price %>€</strong> /day</h4>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

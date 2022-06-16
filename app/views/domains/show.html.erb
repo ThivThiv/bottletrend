@@ -7,10 +7,12 @@
       <li>Description : <br><%= @domain.description %></li>
     </ul>
 
-  <h2>Leurs bouteilles</h2>
+  <h2>Leurs cuvées</h2>
   <ul>
     <% @domain.batches.each do |batch| %>
       <li><%= link_to "#{batch.name}", bottle_path(batch) %></li>
+
+
     <% end %>
   </ul>
 </div>
