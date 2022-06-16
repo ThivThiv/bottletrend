@@ -5,7 +5,8 @@
       <li>Cuvée: <%= @batch.name %> (<%= @batch.year %>) | Région: <%= @batch.region %></li>
       <li>Domaine: <%= @domain.name %></li>
       <li>Description: <%= @batch.description %></li>
-      <li>Stock: <%= @batch.quantity %></li>
+      <li>Stock initial: <%= @batch.quantity %></li>
+      <li>Stock actuel: <%= @batch.available_stock %></li>
       <li>Prix: <%= @batch.initial_price %>€</li>
       <li>Potentiel: <%= @batch.potential %>/5</li>
     </ul>
@@ -19,4 +20,5 @@
     </button>
     <% end %>
   </div>
+
 </div>
