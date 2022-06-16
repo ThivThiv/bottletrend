@@ -11,4 +11,15 @@ class Batch < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  def available_stock
+    self.quantity
+    @bottles = Bottle.where(batch: self)
+    @buyed_bottles = []
+    @bottles.each do |bottle|
+      @buyed_bottles << Transaction.where(bottle: bottle)
+    end
+    return self.quantity - @buyed_bottles.count
+    raise
+  end
 end
