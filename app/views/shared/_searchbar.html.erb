@@ -10,7 +10,9 @@
           %>
         </div>
         <div>
-          <%= submit_tag "Search", class: "btn btn-dark btn-search d-none" %>
+          <%= button_tag type: 'submit', class: "btn btn-dark btn-search", id: "register-button" do %>
+            <i class='fa-solid fa-magnifying-glass'></i>
+          <% end %>
         </div>
       </div>
     <% end %>
