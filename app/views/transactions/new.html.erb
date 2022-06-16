@@ -1,11 +1,11 @@
 <h1>Acheter une bouteille</h1>
 
-<%# <h3><%= @batch.name %></h3> %>
-<%# <h4><%= @batch.year %></h4> %>
-<%# <h4><%= @batch.potential %></h4> %>
+<h3><%= @batch.name %></h3>
+<h4><%= @batch.year %></h4>
+<h4><%= @batch.potential %></h4>
 
 <div>
-  <%= simple_form_for(@batch) do |f| %>
+  <%= simple_form_for([@batch, @transaction]) do |f| %>
     <%= f.input :quantity %>
     <%= f.button :submit, class: "btn btn-search" %>
     <% end %>

@@ -11,5 +11,4 @@ class Batch < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-
 end
