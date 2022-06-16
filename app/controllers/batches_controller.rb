@@ -2,7 +2,11 @@ class BatchesController < ApplicationController
   before_action :set_batch, only: [:show]
 
   def index
-    @batches = Batch.all
+    if params[:query].present?
+      @batches = Batch.global_search(params[:query])
+    else
+      @batches = Batch.all
+    end
   end
 
   def show
