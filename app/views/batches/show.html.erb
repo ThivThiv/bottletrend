@@ -1,5 +1,5 @@
 <%= render 'shared/searchbar' %>
-<div class="domain-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(<%= cl_image_path(@domain.photo.key)%>)">
+<div class="bottle-banner" style= "background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(<%= cl_image_path(@domain.photo.key)%>)">
   <div class="content-domain-banner">
     <h1 class= "domain-title"><%=@batch.name%></h1>
     <h1 class= "domain-title"><%= @batch.region %> (<%= @batch.year %>)</h1>
