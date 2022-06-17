@@ -10,4 +10,9 @@ class PagesController < ApplicationController
     @private_bottles = current_user.kept_bottles_by_batch
     @on_resale_bottles = current_user.on_resale_bottles_by_batch
   end
+
+  def trade
+    @private_bottles = current_user.kept_bottles_by_batch
+    @on_resale_bottles = current_user.on_resale_bottles_by_batch
+  end
 end

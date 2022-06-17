@@ -4,6 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
+
+# faire des tabs
+gem "tabs_on_rails"
 #search bar
 gem 'pg_search', '~> 2.3.0'
 # Creation seeds

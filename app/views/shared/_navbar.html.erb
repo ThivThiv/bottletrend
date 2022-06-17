@@ -2,15 +2,15 @@
   <div class="navbar-buttons">
   <%# Mettre chaque boutton dans une div et display flex %>
     <%= link_to root_path, :action => 'go' do %>
-      <div id="home-btn" class="nav-btn <% if current_page?("/") && controller.controller_name == "pages" %> active <% end %>">
+      <div id="home-btn" class="nav-btn <% if current_page?("/") %> active <% end %>">
         <div class="nav-btn-img">
           <i class="fa-solid fa-house"></i>
         </div>
       </div>
     <% end %>
 
-    <%= link_to batches_path, :action => 'go' do %>
-      <div id="trade-btn" class="nav-btn <% if current_page?("/batches") && controller.controller_name == "batches" %> active <% end %>">
+    <%= link_to trade_path, :action => 'go' do %>
+      <div id="trade-btn" class="nav-btn <% if current_page?("/trade") %> active <% end %>">
         <div class="nav-btn-img" id="svg">
          <i class="fa-solid fa-arrow-right-arrow-left"></i>
         </div>
@@ -18,7 +18,7 @@
     <% end %>
 
     <%= link_to collection_path, :action => 'go' do %>
-      <div id="collection-btn" class="nav-btn <% if current_page?("/collection") && controller.controller_name == "pages" %> active <% end %>">
+      <div id="collection-btn" class="nav-btn <% if current_page?("/collection") %> active <% end %>">
         <div class="nav-btn-img">
           <i class="fa-solid fa-wine-bottle"></i>
         </div>
