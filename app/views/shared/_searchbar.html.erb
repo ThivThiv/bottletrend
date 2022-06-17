@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon" data-controller="hide-search" data-action="scroll@window->hide-search#hideScroll">
   <div class="container-fluid search">
     <%= form_tag batches_path, method: :get do %>
       <div class="search-bar">
