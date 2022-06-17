@@ -87,6 +87,17 @@
   }
 }
 
+.batch-card-total {
+  width: 20%;
+  text-align: right;
+  border-left: 1px solid $light-gray;
+
+  p:last-child {
+    font-size: 10px;
+    font-weight: 400;
+  }
+}
+
 .domain-card-trend {
   width: 15%;
   border-left: 1px solid $light-gray;

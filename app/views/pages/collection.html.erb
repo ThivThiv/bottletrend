@@ -6,7 +6,7 @@
 </div>
 
 <div class="card-collection">
-  <div class="container">
+  <div class="container" id="collection-container">
     <div class="section collection-actions">
       <div class="actions">
         <a class="btn-bleuciel btn-circle" href="/"><i class="fa-solid fa-angles-down"></i></a>
@@ -71,14 +71,14 @@
           </div>
 
           <div class="batch-card-trend">
-            <i class="fa-solid fa-arrow-trend-up">
+            <i class="fa-solid fa-arrow-trend-up"></i>
           </div>
         </div>
       <% end %>
     </div>
 
   <%# Faire partial %>
-    <div class="section collection-section">
+    <div class="section">
       <h3>Mes ventes</h3>
 
       <div class="header-infos-collection">
@@ -112,17 +112,8 @@
           </div>
 
           <div class="batch-card-trend">
-            <i class="fa-solid fa-arrow-trend-up">
+            <i class="fa-solid fa-arrow-trend-up"></i>
           </div>
-        </div>
-      <% end %>
-
-      <% @on_resale_bottles.each do |batch, qty| %>
-        <div class="card">
-          <h4><%= batch.name %></h4>
-          <h5><%= batch.domain.name %></h5>
-          <p>Quantité: <%= qty %></p>
-          <p><%= batch.initial_price * qty %>€</p>
         </div>
       <% end %>
     </div>
