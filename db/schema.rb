@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_16_103256) do
+ActiveRecord::Schema.define(version: 2022_06_17_100241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2022_06_16_103256) do
     t.bigint "batch_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "on_resale", default: false
     t.index ["batch_id"], name: "index_bottles_on_batch_id"
   end
 
@@ -90,6 +89,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_103256) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "price"
+    t.boolean "on_resale", default: false, null: false
     t.index ["bottle_id"], name: "index_transactions_on_bottle_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end

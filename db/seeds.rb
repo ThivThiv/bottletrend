@@ -11,10 +11,10 @@ require "open-uri"
 
 puts "Cleaning database..."
 
-Domain.destroy_all
-Bottle.destroy_all
-Batch.destroy_all
 Transaction.destroy_all
+Bottle.destroy_all
+Domain.destroy_all
+Batch.destroy_all
 User.destroy_all
 
 puts 'Creating user 1'
@@ -24,13 +24,13 @@ user1 = User.create!(
 )
 
 puts 'Creating user 2'
-user1 = User.create!(
+user2 = User.create!(
   email: 'user2@gmail.com',
   password: 'password'
 )
 
 puts 'Creating user 3'
-user1 = User.create!(
+user3 = User.create!(
   email: 'user3@gmail.com',
   password: 'password'
 )
@@ -71,7 +71,7 @@ margaux.save
 
 puts "Creating batch Chateau Malartic Lagraviere"
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376350/mlr2019_oci28o.png')
-b = Batch.new(
+b1 = Batch.new(
   name: "Chateau Malartic Lagraviere",
   quantity: 50,
   initial_price: 80,
@@ -83,12 +83,12 @@ b = Batch.new(
   potential: 4,
   region: "Bordeaux"
 )
-b.photo.attach(io: file, filename: "bottle-chateau-lamartic.jpg", content_type: 'image/png')
-b.save
+b1.photo.attach(io: file, filename: "bottle-chateau-lamartic.jpg", content_type: 'image/png')
+b1.save
 
 puts "Creating batch Les Forts de Latour"
 file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655382871/chateau-latour_yyp9qe.png")
-b = Batch.new(
+b2 = Batch.new(
   name: "Les Forts de Latour",
   quantity: 80,
   initial_price: 230,
@@ -98,12 +98,12 @@ b = Batch.new(
   potential: 4,
   region: "Bordeaux"
 )
-b.photo.attach(io: file, filename: "bottle-les-forts-de-latour.jpg", content_type: 'image/png')
-b.save
+b2.photo.attach(io: file, filename: "bottle-les-forts-de-latour.jpg", content_type: 'image/png')
+b2.save
 
 puts "Creating batch Pauillac"
 file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655383298/1frbor0043553_g74mq0.jpg")
-b = Batch.new(
+b3 = Batch.new(
   name: "Pauillac",
   quantity: 95,
   initial_price: 80,
@@ -113,12 +113,12 @@ b = Batch.new(
   potential: 3,
   region: "Bordeaux"
 )
-b.photo.attach(io: file, filename: "bottle-pauillac.jpg", content_type: 'image/png')
-b.save
+b3.photo.attach(io: file, filename: "bottle-pauillac.jpg", content_type: 'image/png')
+b3.save
 
 puts "Creating batch Chateau Margaux"
 file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655383734/chateau-margaux-2017-1er-cru-classe_bkszcq.png")
-b = Batch.new(
+b4 = Batch.new(
   name: "Chateau Margaux",
   quantity: 45,
   initial_price: 590,
@@ -128,35 +128,35 @@ b = Batch.new(
   potential: 3,
   region: "Bordeaux"
 )
-b.photo.attach(io: file, filename: "bottle-chateau-margaux.jpg", content_type: 'image/png')
-b.save
+b4.photo.attach(io: file, filename: "bottle-chateau-margaux.jpg", content_type: 'image/png')
+b4.save
 
-#   puts "Creating 50 bottles for batch #{n + 1}"
-#   50.times do
-#     Bottle.create!(
-#       batch: batch
-#     )
-#   end
-# end
+batches = [b1, b2, b3, b4]
+users = [user1, user2, user3]
+45.times do
+  b = Bottle.new()
+  b.batch = batches.sample
+  b.save!
+  t = Transaction.new
+  t.bottle = b
+  t.user = users.sample
+  t.save!
+end
 
-# puts "User 1 buy 6 bottle of Chateau Margaux"
-# Batch.first.bottles.each do |bottle|
-#   Transaction.create!(
-#     user: user1,
-#     bottle: bottle
-#   )
+batch = Batch.find_by_name("Les Forts de Latour")
+batch.available_domain_stock.times do
+  b = Bottle.new
+  b.batch = batch
+  b.save!
+  t = Transaction.new
+  t.bottle = b
+  t.user = users.last
+  t.save!
+end
 
-#   bottle.update!(
-#     on_resale: true
-#   )
-# end
-
-# puts "Buying 5 second batch bottles"
-# Batch.second.bottles.first(5).each do |bottle|
-#   Transaction.create!(
-#     user: user1,
-#     bottle: bottle
-#   )
-# end
+users.last.transactions.last(20).each do |transaction|
+  transaction.on_resale = true
+  transaction.save
+end
 
 puts "Finished!"

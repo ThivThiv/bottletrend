@@ -7,10 +7,10 @@ class PagesController < ApplicationController
   end
 
   def collection
-    @private_bottles = current_user.bottles.group(:batch).where(on_resale: true).count
+    @private_bottles = current_user.kept_bottles_by_batch
     @private_batches = @private_bottles.keys
 
-    @on_resale_bottles = current_user.bottles.group(:batch).where(on_resale: false).count
+    @on_resale_bottles = current_user.on_resale_bottles_by_batch
     @on_resale_batches = @on_resale_bottles.keys
   end
 end

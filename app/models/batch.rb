@@ -13,14 +13,16 @@ class Batch < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  def available_stock
-    self.quantity
-    @bottles = Bottle.where(batch: self)
+  def available_domain_stock
+    @bottles = self.bottles
     @buyed_bottles = []
     @bottles.each do |bottle|
       @buyed_bottles << Transaction.where(bottle: bottle)
     end
     return self.quantity - @buyed_bottles.count
-    raise
+  end
+
+  def available_users_stock
+    self.bottles.map(&:last_transaction).select(&:on_resale).count
   end
 end
