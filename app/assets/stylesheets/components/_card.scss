@@ -116,6 +116,18 @@
   background-color: $mauve;
 }
 
+.header-infos-collection {
+  font-size: 12px;
+  border-radius: 3px;
+  width: 100%;
+  padding: 0px 10px;
+  color: white;
+  column-gap: 8px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: $bleuciel;
+}
+
 .header-position {
   width: 15%;
   text-align: right;

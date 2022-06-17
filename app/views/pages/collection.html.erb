@@ -7,35 +7,116 @@
 
 <div class="card-collection">
   <div class="container">
-    <div class="section">
+    <div class="section collection-actions">
       <div class="actions">
-
+        <a class="btn-bleuciel btn-circle" href="/"><i class="fa-solid fa-angles-down"></i></a>
+        <a class="btn-bleuciel btn-circle" href="/"><i class="fa-solid fa-basket-shopping"></i></a>
+        <a class="btn-bleuciel btn-circle" href="/"><i class="fa-brands fa-sellcast"></i></a>
       </div>
     </div>
 
-    <div class="section">
-      <h1>Ma collection</h1>
+    <div class="section collection-section">
+      <h1>Dashboard</h1>
+      <div class="dashboard-infos">
+        <div class="diagram">
+
+        </div>
+
+        <div class="legend">
+          <div class="parent">
+            <div class="div1">Chateau 1</div>
+            <div class="div2">Chateau 2</div>
+            <div class="div3">Chateau 3</div>
+            <div class="div4">Chateau 4</div>
+            <div class="div5">Chateau 5</div>
+            <div class="div6">Chateau 6</div>
+            <div class="div7">Chateau 7</div>
+            <div class="div8">Chateau 8</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="section">
-      <h2>Dashboard</h2>
-    </div>
+    <div class="section collection-section">
+      <h2>Ma collection</h2>
 
-  <%# Faire partial %>
-    <div class="section">
-      <h3>Mes possessions</h3>
+      <div class="header-infos-collection">
+        <div class="name">
+          <span>Nom</span>
+        </div>
+
+        <div class="total header-position">
+          <span>Total</span>
+        </div>
+
+        <div class="trend header-position">
+          <span>Tendance</span>
+        </div>
+      </div>
+
       <% @private_bottles.each do |batch, qty| %>
-        <div class="card">
-          <h4><%= batch.name %></h4>
-          <h5><%= batch.domain.name %></h5>
-          <p>Quantité: <%= qty %></p>
-          <p><%= batch.initial_price * qty %>€</p>
+        <div class="card-element">
+          <div class="card-avatar">
+            <%= batch.photo.attached? ? cl_image_tag(batch.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
+          </div>
+
+          <div class="card-description">
+            <h3><%= truncate(batch.name, length: 40)%> (<%= batch.year %>)</h3>
+            <p><%= batch.domain.name %></p>
+          </div>
+
+          <div class="batch-card-total">
+            <p><%= batch.initial_price * qty %>€</p>
+            <p>Quantité: <%= qty %></p>
+          </div>
+
+          <div class="batch-card-trend">
+            <i class="fa-solid fa-arrow-trend-up">
+          </div>
         </div>
       <% end %>
     </div>
 
-    <div class="section">
+  <%# Faire partial %>
+    <div class="section collection-section">
       <h3>Mes ventes</h3>
+
+      <div class="header-infos-collection">
+        <div class="name">
+          <span>Nom</span>
+        </div>
+
+        <div class="total header-position">
+          <span>Total</span>
+        </div>
+
+        <div class="trend header-position">
+          <span>Tendance</span>
+        </div>
+      </div>
+
+      <% @on_resale_bottles.each do |batch, qty| %>
+        <div class="card-element">
+          <div class="card-avatar">
+            <%= batch.photo.attached? ? cl_image_tag(batch.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
+          </div>
+
+          <div class="card-description">
+            <h3><%= truncate(batch.name, length: 40)%> (<%= batch.year %>)</h3>
+            <p><%= batch.domain.name %></p>
+          </div>
+
+          <div class="batch-card-total">
+            <p><%= batch.initial_price * qty %>€</p>
+            <p>Quantité: <%= qty %></p>
+          </div>
+
+          <div class="batch-card-trend">
+            <i class="fa-solid fa-arrow-trend-up">
+          </div>
+        </div>
+      <% end %>
+
       <% @on_resale_bottles.each do |batch, qty| %>
         <div class="card">
           <h4><%= batch.name %></h4>
