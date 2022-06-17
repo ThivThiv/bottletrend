@@ -1,8 +1,22 @@
+<%= render 'shared/searchbar' %>
+<div class="domain-banner">
+  <div class="photo-domain-banner">
+    <%= @domain.photo.attached? ? cl_image_tag(@domain.photo.key, height: 380, width: 380, crop: :fill) : image_tag("https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=465&q=80", width: 50, heigth: 50, crop: :fill) %>
+  </div>
+
+  <div class="content-domain-banner">
+    <h1 style=color><%= @domain.name%></h1>
+    <div class="btn-in-list">
+      <a class="btn-mauve" href="#">Trade</a>
+    </div>
+  </div>
+</div>
+
 <div class="container">
-  <h1>Notre domain</h1>
+  <h1><%= @domain.name %></h1>
   <div>
-    <ul>
-      <li>Nom du domaine : <%= @domain.name %>
+  </div>
+  <div>
       <li>Année de création : <%= @domain.year %></li>
       <li>Description : <br><%= @domain.description %></li>
     </ul>
@@ -15,4 +29,5 @@
 
     <% end %>
   </ul>
+</div>
 </div>
