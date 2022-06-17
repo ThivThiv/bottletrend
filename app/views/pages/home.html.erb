@@ -14,6 +14,20 @@
     <h2>Les meilleures opportunités</h2>
     <p>Les bouteilles du moment selon nos experts</p>
 
+    <div class="header-infos-home">
+      <div class="name">
+        <span>Nom</span>
+      </div>
+
+      <div class="price header-position">
+        <span>Prix</span>
+      </div>
+
+      <div class="trend header-position">
+        <span>Tendance</span>
+      </div>
+    </div>
+
     <% @batches.first(5).each do |batch| %>
       <%= link_to bottle_path(batch), class:"text-decoration-none" do %>
         <div class="card-element">
@@ -47,6 +61,20 @@
     <h2>Ils ont le vent en poupe !</h2>
     <p>Les domaines les plus en vogue. Leurs bouteilles sont très bien cotées !</p>
 
+     <div class="header-infos-home">
+      <div class="name">
+        <span>Nom</span>
+      </div>
+
+      <div class="price header-position">
+        <span>Création</span>
+      </div>
+
+      <div class="trend header-position">
+        <span>Tendance</span>
+      </div>
+    </div>
+
     <% @domains.first(5).each do |domain| %>
       <%= link_to domain_path(domain), class:"text-decoration-none" do %>
         <div class="card-element">
@@ -71,12 +99,10 @@
     <% end %>
 
     <div class="section-cta">
-      <a class="btn-mauve" href="/domains">Touts les domaines</a>
+      <a class="btn-mauve" href="/domains">Tous les domaines</a>
     </div>
   </div>
-</div>
 
-<div class="container">
   <div class="section">
     <h2>Constituez votre collection de bouteilles</h2>
     <p>Commencez à investir sur vos bouteilles favorites avec Bottle Trends en suivant les étapes ci dessous. </p>
@@ -91,6 +117,8 @@
     <h2>Commencez à investir</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquet tortor vel urna vulputate. Ultricies ac, pretium netus id sed enim pretium fames pellentesque.</p>
 
-    <%= link_to "Commencez", batches_path, class:"btn btn-danger" %>
+    <div class="section-cta">
+      <a class="btn-mauve" href="/">Commencer</a>
+    </div>
   </div>
 </div>

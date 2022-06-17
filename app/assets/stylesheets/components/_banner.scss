@@ -5,7 +5,7 @@
   text-align: center;
 
   background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://images.unsplash.com/photo-1423483641154-5411ec9c0ddf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
-  background-position: center;
+  background-position: 500px;
   background-size: cover;
   height: 370px;
 }
@@ -17,4 +17,82 @@
     color: white;
     font-weight: 600;
   }
+}
+
+//Dans la collection
+.banner-solde {
+  height: 170px;
+  width: 100%;
+  background-color: $vert;
+  display: flex;
+  align-items: center;
+}
+
+.content-solde {
+  color: white;
+  margin-left: 35px;
+  p {
+    margin: 0;
+  }
+}
+
+#money {
+  font-size: 40px;
+}
+
+  // Show domaine
+.domain-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+  height: 370px;
+}
+
+.domain-content-banner {
+  padding: 30px;
+}
+
+.domain-title {
+  font-size: 26px!important;
+  color: white!important;
+  font-weight: 600;
+}
+
+.tous-les-domaines-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://res.cloudinary.com/messa57fr/image/upload/v1655461534/Domaine-viticole-1_wv0x5t.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 370px;
+}
+
+.tous-les-batches-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://res.cloudinary.com/messa57fr/image/upload/v1655461534/Domaine-viticole-1_wv0x5t.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 370px;
+}
+
+// show bottle
+
+.bottle-banner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+  height: 200px;
 }
