@@ -124,3 +124,11 @@
 .card-item:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
+
+//collection
+.card-collection {
+  border-radius: 25px;
+  background-color: $light-gray;
+  position: relative;
+  bottom: 45px;
+}
