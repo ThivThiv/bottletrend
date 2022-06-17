@@ -7,22 +7,22 @@
 <%# Faire partial %>
   <section>
     <h3>Mes possessions</h3>
-    <% @private_batches.each do |batch| %>
+    <% @private_bottles.each do |batch, qty| %>
       <div class="card">
         <h4><%= batch.name %></h4>
         <h5><%= batch.domain.name %></h5>
-        <p>Quantité: <%= q = @private_bottles[batch] %></p>
-        <p><%= batch.initial_price * q %>€</p>
+        <p>Quantité: <%= qty %></p>
+        <p><%= batch.initial_price * qty %>€</p>
       </div>
     <% end %>
 
     <h3>Mes ventes</h3>
-    <% @on_resale_batches.each do |batch| %>
+    <% @on_resale_bottles.each do |batch, qty| %>
       <div class="card">
         <h4><%= batch.name %></h4>
         <h5><%= batch.domain.name %></h5>
-        <p>Quantité: <%= q = @on_resale_bottles[batch] %></p>
-        <p><%= batch.initial_price * q %>€</p>
+        <p>Quantité: <%= qty %></p>
+        <p><%= batch.initial_price * qty %>€</p>
       </div>
     <% end %>
   </section>
