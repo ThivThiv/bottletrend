@@ -24,7 +24,8 @@
   <div class="card-bottle-element">
     <div class="card-bottle-description">
       <h3>Stock initial: <%= @batch.quantity %></p>
-      <h3>Stock actuel: <%= @batch.available_stock %></p>
+      <h3>Stock actuel en domaine: <%= @batch.available_domain_stock %></p>
+      <h3>Stock actuel en Utilisateurs: <%= @batch.available_users_stock %></p>
       <h3>Prix: <%= @batch.initial_price %>€</p>
       <h3>Potentiel: <%= @batch.potential %>/5</p>
      </div>
