@@ -19,7 +19,7 @@ class Bottle < ApplicationRecord
   end
 
   def last_transaction
-    self.transactions.order(created_at: :asc).first
+    self.transactions.order(created_at: :desc).first
   end
 
   def current_owner
