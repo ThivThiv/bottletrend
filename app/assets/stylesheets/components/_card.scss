@@ -87,6 +87,17 @@
   }
 }
 
+.batch-card-total {
+  width: 20%;
+  text-align: right;
+  border-left: 1px solid $light-gray;
+
+  p:last-child {
+    font-size: 10px;
+    font-weight: 400;
+  }
+}
+
 .domain-card-trend {
   width: 15%;
   border-left: 1px solid $light-gray;
@@ -116,15 +127,31 @@
   background-color: $mauve;
 }
 
+.header-infos-collection {
+  font-size: 12px;
+  border-radius: 3px;
+  width: 100%;
+  padding: 0px 10px;
+  color: white;
+  column-gap: 8px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: $bleuciel;
+}
+
 .header-position {
   width: 15%;
   text-align: right;
 }
 
-.card-item:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2);
-}
+//collection
+.card-collection {
+  border-radius: 25px;
+  background-color: $light-gray;
+  position: relative;
+  bottom: 45px;
 
+ // show de la bottle
 .card-bottle-element {
   overflow: hidden;
   padding: 20px 8px;
