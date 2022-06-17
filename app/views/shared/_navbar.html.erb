@@ -9,8 +9,8 @@
       </div>
     <% end %>
 
-    <%= link_to "/", :action => 'go' do %>
-      <div id="trade-btn" class="nav-btn <% if current_page?("/") && controller.controller_name == "pages" %> active <% end %>">
+    <%= link_to batches_path, :action => 'go' do %>
+      <div id="trade-btn" class="nav-btn <% if current_page?("/batches") && controller.controller_name == "batches" %> active <% end %>">
         <div class="nav-btn-img" id="svg">
          <i class="fa-solid fa-arrow-right-arrow-left"></i>
         </div>
