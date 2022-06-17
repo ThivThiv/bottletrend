@@ -38,4 +38,24 @@
 
 #money {
   font-size: 40px;
+
+  // Show domaine
+.domain-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-position: center;
+  background-size: cover;
+  height: 370px;
+}
+
+.domain-content-banner {
+  padding: 30px;
+}
+
+.domain-title {
+  font-size: 26px!important;
+  color: white!important;
+  font-weight: 600;
 }
