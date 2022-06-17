@@ -59,7 +59,7 @@
   width: 50%;
 
   p {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 400;
   }
 }
@@ -123,4 +123,26 @@
 
 .card-item:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2);
+}
+
+.card-bottle-element {
+  overflow: hidden;
+  padding: 20px 8px;
+  margin-top: 20px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+    p {
+      font-size: 12px;
+      font-weight: 400;
+    }
+}
+
+.card-bottle-description{
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0px 20px;
 }
