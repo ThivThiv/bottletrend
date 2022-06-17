@@ -19,6 +19,27 @@
   }
 }
 
+//Dans la collection
+.banner-solde {
+  height: 200px;
+  width: 100%;
+  background-color: $vert;
+  display: flex;
+  align-items: center;
+}
+
+.content-solde {
+  color: white;
+  margin-left: 35px;
+  p {
+    margin: 0;
+  }
+}
+
+#money {
+  font-size: 40px;
+
+  // Show domaine
 .domain-banner {
   display: flex;
   justify-content: center;
