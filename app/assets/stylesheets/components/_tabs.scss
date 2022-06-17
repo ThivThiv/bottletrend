@@ -1,0 +1,17 @@
+.tabs__content {
+  order: 1;
+  width: 100%;
+  border-bottom: 3px solid #dddddd;
+  line-height: 1.5;
+  font-size: 0.9em;
+  display: none;
+}
+
+.tabs__radio:checked + .tabs__label {
+  font-weight: bold;
+  border-bottom: 2px solid $jaune;
+}
+
+.tabs__radio:checked + .tabs__label + .tabs__content {
+  display: initial;
+}

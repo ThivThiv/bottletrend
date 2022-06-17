@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'batches/:id', to: 'batches#show', as: 'bottle'
   get 'collection', to: 'pages#collection'
-  get "domains/:id", to:"domains#show", as: "domain"
-  get "batches", to:"batches#index"
-  get "domains", to:"domains#index"
+  get "domains/:id", to: "domains#show", as: "domain"
+  get "batches", to: "batches#index"
+  get "domains", to: "domains#index"
+  get 'trade', to: 'pages#trade'
 
   resources :batches do
     resources :transactions, only: [:new, :create]
