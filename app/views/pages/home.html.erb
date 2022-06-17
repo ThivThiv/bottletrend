@@ -14,6 +14,20 @@
     <h2>Les meilleures opportunités</h2>
     <p>Les bouteilles du moment selon nos experts</p>
 
+    <div class="header-infos-home">
+      <div class="name">
+        <span>Nom</span>
+      </div>
+
+      <div class="price header-position">
+        <span>Prix</span>
+      </div>
+
+      <div class="trend header-position">
+        <span>Tendance</span>
+      </div>
+    </div>
+
     <% @batches.first(5).each do |batch| %>
       <%= link_to bottle_path(batch), class:"text-decoration-none" do %>
         <div class="card-element">
@@ -46,6 +60,20 @@
   <div class="section">
     <h2>Ils ont le vent en poupe !</h2>
     <p>Les domaines les plus en vogue. Leurs bouteilles sont très bien cotées !</p>
+
+     <div class="header-infos-home">
+      <div class="name">
+        <span>Nom</span>
+      </div>
+
+      <div class="price header-position">
+        <span>Création</span>
+      </div>
+
+      <div class="trend header-position">
+        <span>Tendance</span>
+      </div>
+    </div>
 
     <% @domains.first(5).each do |domain| %>
       <%= link_to domain_path(domain), class:"text-decoration-none" do %>
