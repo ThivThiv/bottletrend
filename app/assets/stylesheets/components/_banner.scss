@@ -60,3 +60,27 @@
   color: white!important;
   font-weight: 600;
 }
+
+.tous-les-domaines-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://res.cloudinary.com/messa57fr/image/upload/v1655461534/Domaine-viticole-1_wv0x5t.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 370px;
+}
+
+.tous-les-batches-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://res.cloudinary.com/messa57fr/image/upload/v1655461534/Domaine-viticole-1_wv0x5t.jpg);
+  background-position: center;
+  background-size: cover;
+  height: 370px;
+}
