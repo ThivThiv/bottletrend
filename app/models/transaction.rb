@@ -12,16 +12,22 @@ class Transaction < ApplicationRecord
     bottles.each do |bottle|
       transaction = Transaction.new
       transaction.user = user
-      # added price to transaction si domain sales
-      transaction.price = bottle.batch.initial_price
+      # added price to transaction if domain sales
       balance = user.balance
-      balance -= transaction.price
+      transaction.price = bottle.batch.initial_price
+      if user.balance > transaction.price
+        transaction.save
+        balance -= transaction.price
+        user.update(balance: balance)
+        transactions << transaction
+      else
+        flash[:alert] = "Not enough funds"
+      end
+      return transactions
+      # comment these for algorithm
       # if !bottle.transactions.blank?
       #   transaction.price = 900 # a calculer en fct des dernières transaction + algo
       # end
-      transaction.save
-      user.update(balance: balance)
-      transactions << transaction
     end
   end
 
