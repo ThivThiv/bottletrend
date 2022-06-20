@@ -14,6 +14,7 @@ class Transaction < ApplicationRecord
       transaction.user = user
       # added price to transaction if domain sales
       balance = user.balance
+      transaction.bottle = bottle
       transaction.price = bottle.batch.initial_price
       if user.balance > transaction.price
         transaction.save
@@ -21,7 +22,7 @@ class Transaction < ApplicationRecord
         user.update(balance: balance)
         transactions << transaction
       else
-        flash[:alert] = "Not enough funds"
+        flash.alert = "no money"
       end
       return transactions
       # comment these for algorithm
