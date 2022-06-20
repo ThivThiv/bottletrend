@@ -30,13 +30,11 @@
     </div>
   </div>
   <div class="trade-button" style = "display: flex; justify-content: space-around;">
-    <% if @batch.available_domain_stock == 0 && @batch.available_users_stock > 0 %>
-      <%= link_to 'Revendre', "#", class: "btn-mauve"  %>
-      <%= link_to 'Acheter', new_batch_transaction_path(@batch), class: "btn-jaune" %>
-    <% elsif @batch.available_domain_stock == 0 && @batch.available_users_stock == 0 %>
+    <% if @batch.available? %>
+      <%= link_to 'Acheter', new_batch_transaction_path(@batch), class: "btn-mauve" %>
+    <% end %>
+    <% if current_user.can_sell_from_batch?(@batch) %>
       <%= link_to 'Revendre', "#", class: "btn-jaune"  %>
-    <% else %>
-      <%= link_to 'Acheter', new_batch_transaction_path(@batch), class: "btn-jaune" %>
     <% end %>
   </div>
 </div>

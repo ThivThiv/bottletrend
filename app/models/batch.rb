@@ -28,6 +28,10 @@ class Batch < ApplicationRecord
     end.count
   end
 
+  def available?
+    available_domain_stock + available_users_stock > 0
+  end
+
   def quality
     tableau = {
       "2003": {"Alsace": 3, "Beaujolais": 4, "Bordeaux": 4, "Bourgogne": 4, "Champagne": 2, "Jura": 4, "Languedoc-Roussillon": 3, "Provence": 4, "Savoie": 4, "Sud-Ouest": 4, "Val de Loire": 5, "Vallée du Rhône": 4 },

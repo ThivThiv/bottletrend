@@ -19,5 +19,4 @@ class TransactionsController < ApplicationController
   def transaction_params
     params.require(:transaction).permit(:quantity, :bottle_id, :user_id)
   end
-
 end
