@@ -12,6 +12,8 @@ class PagesController < ApplicationController
   end
 
   def trade
+    @batches = Batch.all
+    @domains = Domain.all
     @private_bottles = current_user.kept_bottles_by_batch
     @on_resale_bottles = current_user.on_resale_bottles_by_batch
   end
