@@ -1,17 +1,28 @@
-.tabs__content {
-  order: 1;
-  width: 100%;
-  border-bottom: 3px solid #dddddd;
-  line-height: 1.5;
-  font-size: 0.9em;
-  display: none;
+.nav-link-action {
+  margin: 0px 10px;
+
+  &[aria-selected="true"] {
+    font-weight: 600;
+    color: black;
+    border-bottom: 3px solid $jaune;
+  }
+}
+.nav-link-onglet {
+  margin: 0px 10px;
+  font-size: 12px;
+
+  &[aria-selected="true"] {
+    font-weight: 600;
+    background-color: $jaune;
+    border-radius: 25px;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    padding: 3px 15px;
+  }
 }
 
-.tabs__radio:checked + .tabs__label {
-  font-weight: bold;
-  border-bottom: 2px solid $jaune;
-}
-
-.tabs__radio:checked + .tabs__label + .tabs__content {
-  display: initial;
+.nav-onglets {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }

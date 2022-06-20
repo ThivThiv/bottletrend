@@ -1,39 +1,35 @@
 <%= render 'shared/searchbar' %>
 <div class="container">
   <div class="section">
-    <div class="tabs">
-      <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
-      <label for="tab1" class="tabs__label">Achat</label>
-      <div class="tabs__content">
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <div class="nav-link-action active" id="pills-achat-tab" data-bs-toggle="pill" data-bs-target="#pills-achat" type="button" role="tab" aria-controls="pills-achat" aria-selected="true">Achat</div>
+      </li>
 
+      <li class="nav-item" role="presentation">
+        <div class="nav-link-action" id="pills-vente-tab" data-bs-toggle="pill" data-bs-target="#pills-vente" type="button" role="tab" aria-controls="pills-vente" aria-selected="false">Vente</div>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-achat" role="tabpanel" aria-labelledby="pills-achat-tab" tabindex="0">
+        <ul class="nav nav-pills nav-onglets mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <div class="nav-link-onglet active" id="pills-domain-tab" data-bs-toggle="pill" data-bs-target="#pills-domain" type="button" role="tab" aria-controls="pills-domain" aria-selected="true">Domaines</div>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <div class="nav-link-onglet" id="pills-user-tab" data-bs-toggle="pill" data-bs-target="#pills-user" type="button" role="tab" aria-controls="pills-user" aria-selected="false">Utilisateurs</div>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-domain" role="tabpanel" aria-labelledby="pills-domain-tab" tabindex="0">Domaines blablabla</div>
+          <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0">Utilisateurs blablabla</div>
+        </div>
       </div>
-      <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
-      <label for="tab2" class="tabs__label">Vente</label>
-      <div class="tabs__content">
-        <% @private_bottles.each do |batch, qty| %>
-            <%= link_to batch_path(batch), class:"text-decoration-none" do %>
-              <div class="card-element">
-                <div class="card-avatar">
-                  <%= batch.photo.attached? ? cl_image_tag(batch.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
-                </div>
 
-                <div class="card-description">
-                  <h3><%= truncate(batch.name, length: 40)%> (<%= batch.year %>)</h3>
-                  <p><%= batch.domain.name %></p>
-                </div>
-
-                <div class="batch-card-total">
-                  <p><%= batch.initial_price * qty %>€</p>
-                  <p>Quantité: <%= qty %></p>
-                </div>
-
-                <div class="batch-card-trend">
-                  <i class="fa-solid fa-arrow-trend-up"></i>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-      </div>
+      <div class="tab-pane fade" id="pills-vente" role="tabpanel" aria-labelledby="pills-vente-tab" tabindex="0">Vente blablabla</div>
     </div>
   </div>
 </div>
