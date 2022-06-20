@@ -4,7 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
-
+# group by date for chartkick
+gem "groupdate"
+# faire des charts
+gem "chartkick"
 # faire des tabs
 gem "tabs_on_rails"
 #search bar

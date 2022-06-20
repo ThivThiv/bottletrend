@@ -16,6 +16,8 @@ ActiveStorage.start()
 import "controllers"
 import "bootstrap"
 import { maxQuantity } from "../plugins/max_quantity"
+import "chartkick/chart.js"
+
 
 /* document.addEventListener("turbolinks:load", () => {
   maxQuantity();
