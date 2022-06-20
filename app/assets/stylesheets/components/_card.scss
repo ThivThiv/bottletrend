@@ -171,12 +171,32 @@
   margin-top: 20px;
   background: white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  // display: block;
+  // align-items: center;
+  //   p {
+  //     font-size: 12px;
+  //     font-weight: 400;
+  //   }
+}
+
+.card-bottle-photo {
   display: flex;
-  align-items: center;
-    p {
-      font-size: 12px;
-      font-weight: 400;
+  justify-content: center;
+  padding: 10px;
+  height: 285px;
+  img {
+    height: auto;
+    width: auto;
+  }
+  .card-bottle-description {
+    .price-trend {
+      display: flex;
+      justify-content: space-between;
     }
+    p{
+      margin-bottom: 0;
+    }
+  }
 }
 
 .card-bottle-description{
