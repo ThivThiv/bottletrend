@@ -13,6 +13,16 @@ class Batch < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  def current_price
+    if available_domain_stock.positive?
+      self.initial_price
+    else
+      last_transactions = Bottle.joins(:transactions).where(batch: self).map(&:last_transaction)
+      last_transaction = last_transactions.sort_by{|t| t.created_at }.last
+      Transaction.compute_price(last_transaction.price, self)
+    end
+  end
+
   def available_domain_stock
     @bottles = self.bottles
     @buyed_bottles = []

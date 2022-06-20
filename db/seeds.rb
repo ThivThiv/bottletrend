@@ -73,7 +73,7 @@ puts "Creating batch Chateau Malartic Lagraviere"
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376350/mlr2019_oci28o.png')
 b1 = Batch.new(
   name: "Chateau Malartic Lagraviere",
-  quantity: 50,
+  quantity: 9000,
   initial_price: 80,
   domain: malartic,
   description: "La robe : magnifique robe rouge intense et resplendissante
@@ -90,7 +90,7 @@ puts "Creating batch Les Forts de Latour"
 file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655382871/chateau-latour_yyp9qe.png")
 b2 = Batch.new(
   name: "Les Forts de Latour",
-  quantity: 80,
+  quantity: 7000,
   initial_price: 230,
   domain: latour,
   description: "Voici une merveilleuse introduction aux vins du légendaire Château Latour. Affichant une robe d’un rubis intense, le nez est fruité, frais et mûr sur fond de pivoine et d’épices. ",
@@ -105,7 +105,7 @@ puts "Creating batch Pauillac"
 file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655383298/1frbor0043553_g74mq0.jpg")
 b3 = Batch.new(
   name: "Pauillac",
-  quantity: 95,
+  quantity: 10000,
   initial_price: 80,
   domain: latour,
   description: "e premier millésime de ce vin voit le jour en 1989 avec l'objectif de proposer une approche plus accessible du Château Latour. Il est élaboré avec les raisins des jeunes vignes du domaine. Toutes les étapes de fabrication sont dirigées avec soin. Il est élevé en fût pendant 1 an environ avec un renouvellement en bois neuf de 20%. Il est recommandé de le garder au moins 5 ans en bouteille avant dégustation.",
@@ -120,7 +120,7 @@ puts "Creating batch Chateau Margaux"
 file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655383734/chateau-margaux-2017-1er-cru-classe_bkszcq.png")
 b4 = Batch.new(
   name: "Chateau Margaux",
-  quantity: 45,
+  quantity: 7000,
   initial_price: 590,
   domain: margaux,
   description: "Dominant sans grand mal toute l’appellation Margaux et d'une remarquable constance, Château Margaux produit des vins devenus mythiques tant le mariage rare de la finesse dans la densité, et de la fraîcheur dans l’opulence est réussi.",
