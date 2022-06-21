@@ -1,27 +1,40 @@
-<div class="transaction-container" data-controller= "max-quantity"
-data-max-quantity-domain-value="<%= @batch.available_domain_stock %>"
-data-max-quantity-users-value="<%= @batch.available_users_stock %>"
->
+<div class="section">
+  <div class="container">
+  <h1>Revendre mes bouteille</h1>
+    <div class="card-bottle-photo">
+      <%= @batch.photo.attached? ? cl_image_tag(@batch.photo.key, height: 150, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
+      <div class="card-bottle-description">
+        <div class="price-trend">
+        <%# Que si domaine stock > 0 %>
+          <h2> <strong>Prix:</strong> <%= @batch.current_price %>€</h2>
+          <div class="domain-card-trend">
+            <p><i class="fa-solid fa-arrow-trend-up"></i></p>
+          </div>
+        </div>
+        <br>
+        <p><strong>Stock initial : </strong> <%= @batch.quantity %></p>
+        <%# <p><strong>Votre stock : </strong> <%= @batch.qty %></p>
+        <% if @batch.available_domain_stock.positive? %>
+          <p><strong>Stock</strong> : <%= @batch.available_domain_stock %> <i>(Domaine)</i></p>
+        <% else %>
+          <p><strong>Stock</strong> : <%= @batch.available_users_stock %> <i>(Utilisateurs)</i></p>
+        <% end %>
+        <p><strong>Année:</strong> : <%= @batch.year %></p>
+        <p><strong>Potentiel : </strong> <%= @batch.potential %>/5</p>
+      </div>
+    </div>
 
-    <h1>Acheter une bouteille</h1>
-
-    <h3><%= @batch.name %></h3>
-    <h4><%= @batch.year %></h4>
-    <h4><%= @batch.potential %></h4>
-    <h4 class= "available-stock">Dispo au domaine : <%= @batch.available_domain_stock %></h4>
-    <h4 class= "available-stock">Dispo en P2P : <%= @batch.available_users_stock %></h4>
-<p> nombre de bouteillers: <%= @my_bottles_count %></p>
-<p>instance de boutteilles<%= @my_bottles %></p>
-    <div>
+    <div data-controller="max-quantity" data-max-quantity-domain-value="<%= @batch.available_domain_stock %>" data-max-quantity-users-value="<%= @batch.available_users_stock %>">
       <%= simple_form_for(@batch,method: :post, url: batch_resale_path(@batch)) do |f| %>
         <%= f.input :quantity, input_html: { data: { max_quantity_target: :input,  action: "input->max-quantity#available"} } %>
          <div class="flash flash-danger alert-dismissible fade show d-none" role="alert" data-max-quantity-target="alert">
           <span><strong>Oops!</strong> 😱 Not enough stock available.</span>
         </div>
-        <div class="btn btn-search" role="button" data-disable-button-target="button">
-          <%= f.button :submit, input_html: { data: { disable_button_target: "button", action: "input->disable-button#disable"} } %>
+
+        <div class="btn btn-jaune" role="button" data-disable-button-target="button">
+          <%= f.button :submit, "Revendre", input_html: { data: { disable_button_target: "button", action: "input->disable-button#disable"} } %>
         </div>
         <% end %>
     </div>
-
+  </div>
 </div>
