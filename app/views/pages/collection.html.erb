@@ -5,6 +5,8 @@
   </div>
 </div>
 
+
+
 <div class="card-collection">
   <div class="container" id="collection-container">
     <div class="section collection-actions">
@@ -19,22 +21,10 @@
       <h2>Dashboard</h2>
       <div class="dashboard-infos">
         <div class="diagram">
-
+          <%= pie_chart @private_bottles %>
+<%# name: @private_bottles.map{|s| {name: s.name}} %>
+<%# name:@private_bottles.flatten.keys[0].name %>
         </div>
-
-        <div class="legend">
-          <div class="parent">
-            <div class="div1">Chateau 1</div>
-            <div class="div2">Chateau 2</div>
-            <div class="div3">Chateau 3</div>
-            <div class="div4">Chateau 4</div>
-            <div class="div5">Chateau 5</div>
-            <div class="div6">Chateau 6</div>
-            <div class="div7">Chateau 7</div>
-            <div class="div8">Chateau 8</div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="section collection-section">
