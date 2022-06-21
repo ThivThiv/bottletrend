@@ -1,6 +1,7 @@
 class Bottle < ApplicationRecord
   belongs_to :batch
   has_many :transactions, dependent: :destroy
+  validates :batch, presence: true
 
   def self.find_or_create_for_batch(batch, quantity)
     if batch.available_domain_stock > 0

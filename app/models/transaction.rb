@@ -2,6 +2,8 @@ class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :bottle
   before_create :set_price
+  validates :bottle, presence: true
+  validates :user, presence: true
 
   def set_price
     self.price ||= Bottle.find(self.bottle_id).batch.initial_price
@@ -35,9 +37,6 @@ class Transaction < ApplicationRecord
         transactions << transaction
         balance -= transaction.price
         user.update(balance: balance)
-
-      # else
-        # flash.now[:alert] = "Contactez nous pour recharger votre wallet!"
       end
     end
 
