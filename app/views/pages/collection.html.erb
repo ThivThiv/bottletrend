@@ -18,18 +18,24 @@
     </div>
 
     <div class="section collection-section">
-      <h2>Dashboard</h2>
+      <h2>Mon portefeuille</h2>
       <div class="dashboard-infos">
-        <div class="diagram">
-          <%= pie_chart @private_bottles %>
-<%# name: @private_bottles.map{|s| {name: s.name}} %>
-<%# name:@private_bottles.flatten.keys[0].name %>
+        <div class="section">
+
+          <% @name_hash_for_pie_chart = {} %>
+          <% @private_bottles.each do |key, value| %>
+            <% @name_hash_for_pie_chart[key.name] = value %>
+          <% end %>
+
+          <%= pie_chart @name_hash_for_pie_chart %>
+
         </div>
+
     </div>
 
     <div class="section collection-section">
-      <h2>Ma collection</h2>
-
+      <h2>Ma collection </h2>
+        <%# <%= total_portefeuille = (batch.current_price * qty) + total_portefeuille %>
       <div class="header-infos-collection">
         <div class="name">
           <span>Nom</span>
