@@ -20,4 +20,8 @@ class Transaction < ApplicationRecord
       transactions << transaction
     end
   end
+
+  def self.resell_current_user_bottles
+
+  end
 end

@@ -14,6 +14,11 @@ class TransactionsController < ApplicationController
     redirect_to collection_path
   end
 
+  def update
+    @batch = Batch.find(params[:batch_id])
+    @bottles = Bottle.find_for_batch(@batch, params[:transaction][:quantity].to_i)
+  end
+
   private
 
   def transaction_params
