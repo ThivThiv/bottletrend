@@ -1,3 +1,9 @@
+
+
+
+
+
+
 .btn-search {
   border-radius: 50px;
   width: 38px;
@@ -14,6 +20,8 @@
   text-decoration: none;
   color: white;
   font-size: 14px;
+  max-height: 45px;
+  border: #ff000000;
 }
 
 .btn-mauve {
@@ -23,6 +31,8 @@
   text-decoration: none;
   color: white;
   font-size: 14px;
+  max-height: 45px;
+  border: #ff000000;
 }
 
 .btn-bleuciel {
@@ -52,5 +62,38 @@
 
 .trade-button {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.button-trade {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.opened-buy-tab {
+  height: 0;
+  opacity: 0;
+  transition: 0.4s ease;
+    &.active {
+      height: 300px;
+      opacity: 1;
+    }
+}
+
+
+.opened-sell-tab {
+  height: 0;
+  opacity: 0;
+  transition: 0.4s ease;
+    &.active {
+      height: 150px;
+      opacity: 1;
+    }
+}
+
+.btn {
+  color: white!important;
 }
