@@ -12,7 +12,7 @@ class Transaction < ApplicationRecord
   end
 
   def self.compute_price(old_price, batch)
-    price = old_price * (1 + ((batch.domain.popularity / 5) + (120/batch.quantity)**1.5 + (4/5)**2 + (batch.quality / 5)**2 + (batch.potential / 5)**1.5) / 100)
+    price = old_price * (1 + ((batch.domain.popularity / 5) + (120/batch.quantity)**1.5 + (batch.quality / 5)**2 + (batch.potential / 5)**1.5) / 100)
     price.round
   end
 
