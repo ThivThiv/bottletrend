@@ -21,8 +21,11 @@
         </div>
         <br>
         <p><strong>Stock initial : </strong> <%= @batch.quantity %></p>
-        <p><strong>Stock actuel </strong> <i>domaine</i> : <%= @batch.available_domain_stock %></p>
-        <p><strong>Stock actuel </strong> <i>utilisateurs</i> : <%= @batch.available_users_stock %></p>
+        <% if @batch.available_domain_stock.positive? %>
+          <p><strong>Stock</strong> : <%= @batch.available_domain_stock %> (Domaine)</p>
+        <% else %>
+          <p><strong>Stock</strong> : <%= @batch.available_users_stock %> (Utilisateurs)</p>
+        <% end %>
         <p><strong>Potentiel : </strong> <%= @batch.potential %>/5</p>
       </div>
     </div>
