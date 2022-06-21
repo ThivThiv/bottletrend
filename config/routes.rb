@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :batches do
     resources :transactions, only: [:new, :create]
+    get "resale", to: "transactions#resale"
+    post "resale", to: "transactions#create_resale"
   end
   # post
 end

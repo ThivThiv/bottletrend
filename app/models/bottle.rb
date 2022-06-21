@@ -43,5 +43,4 @@ class Bottle < ApplicationRecord
       transaction.bottle
     end.first(quantity)
   end
-
 end

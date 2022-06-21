@@ -9,6 +9,10 @@ class User < ApplicationRecord
     self.bottles.where(batch: batch).count
   end
 
+  def current_owned_bottle(batch)
+    self.bottles.where(batch: batch)
+  end
+
   def curently_owned_transactions
     transactions = Transaction.order(created_at: :desc)
     last_transactions = []

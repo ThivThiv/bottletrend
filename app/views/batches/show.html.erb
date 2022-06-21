@@ -38,7 +38,7 @@
       <%= link_to 'Acheter', new_batch_transaction_path(@batch), class: "btn-mauve" %>
     <% end %>
     <% if current_user.can_sell_from_batch?(@batch) %>
-      <%= link_to 'Revendre', "#", class: "btn-jaune"  %>
+      <%= link_to 'Revendre', batch_resale_path(@batch), class: "btn-jaune"  %>
     <% end %>
   </div>
 
