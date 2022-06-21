@@ -28,7 +28,6 @@ class Transaction < ApplicationRecord
       if transaction.sold_between_users?
         old_price = bottle.batch.current_price
         transaction.price = self.compute_price(old_price, bottle.batch)
-        raise
       end
 
       if user.balance > transaction.price
