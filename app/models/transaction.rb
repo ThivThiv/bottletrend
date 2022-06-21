@@ -21,13 +21,38 @@ class Transaction < ApplicationRecord
     bottles.each do |bottle|
       transaction = Transaction.new
       transaction.user = user
+      # added price to transaction if domain sales
+      balance = user.balance
       transaction.bottle = bottle
+<<<<<<< HEAD
+      transaction.price = bottle.batch.initial_price
+      if user.balance > transaction.price
+        transaction.save
+        balance -= transaction.price
+        user.update(balance: balance)
+        transactions << transaction
+      else
+        flash.alert = "no money"
+=======
       if transaction.sold_between_users?
         old_price = bottle.last_transaction.price
         transaction.price = self.compute_price(old_price, bottle.batch)
+>>>>>>> origin
       end
-      transaction.save
-      transactions << transaction
+      return transactions
+      # comment these for algorithm
+      # if !bottle.transactions.blank?
+      #   transaction.price = 900 # a calculer en fct des dernières transaction + algo
+      # end
     end
   end
+
+  # def self.deduct_balance
+  #     user = current_user
+  #     price = transaction.price
+  #     user.balance = user.balance - price
+  #   end
+  # end
+
+
 end
