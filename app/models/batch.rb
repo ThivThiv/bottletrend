@@ -13,6 +13,16 @@ class Batch < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  def current_price
+    if available_domain_stock.positive?
+      self.initial_price
+    else
+      last_transactions = Bottle.joins(:transactions).where(batch: self).map(&:last_transaction)
+      last_transaction = last_transactions.sort_by{|t| t.created_at }.last
+      Transaction.compute_price(last_transaction.price, self)
+    end
+  end
+
   def available_domain_stock
     @bottles = self.bottles
     @buyed_bottles = []
@@ -53,9 +63,6 @@ class Batch < ApplicationRecord
       "2019": {"Alsace": 5, "Beaujolais": 4, "Bordeaux": 5, "Bourgogne": 4, "Champagne": 4, "Jura": 4, "Languedoc-Roussillon": 3, "Provence": 3, "Savoie": 4, "Sud-Ouest": 4, "Val de Loire": 4, "Vallée du Rhône": 3 },
       "2020": {"Alsace": 4, "Beaujolais": 4, "Bordeaux": 5, "Bourgogne": 4, "Champagne": 3, "Jura": 4, "Languedoc-Roussillon": 4, "Provence": 4, "Savoie": 5, "Sud-Ouest": 5, "Val de Loire": 4, "Vallée du Rhône": 4 }
     }
-    console
     return tableau[:"#{self.year}"][:"#{self.region}"]
   end
-
-
 end
