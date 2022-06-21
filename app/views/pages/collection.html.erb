@@ -21,9 +21,9 @@
       <h2>Dashboard</h2>
       <div class="dashboard-infos">
         <div class="diagram">
-
-          <%= pie_chart @private_bottles   %>
+          <%= pie_chart @private_bottles %>
 <%# name: @private_bottles.map{|s| {name: s.name}} %>
+<%# name:@private_bottles.flatten.keys[0].name %>
         </div>
     </div>
 
