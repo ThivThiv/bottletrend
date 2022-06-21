@@ -35,8 +35,9 @@ class Transaction < ApplicationRecord
         transactions << transaction
         balance -= transaction.price
         user.update(balance: balance)
-      else
-        flash.alert = "no money"
+
+      # else
+        # flash.now[:alert] = "Contactez nous pour recharger votre wallet!"
       end
     end
 

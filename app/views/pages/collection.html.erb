@@ -35,7 +35,7 @@
 
     <div class="section collection-section">
       <h2>Ma collection </h2>
-        <%# <%= total_portefeuille = (batch.current_price * qty) + total_portefeuille %>
+
       <div class="header-infos-collection">
         <div class="name">
           <span>Nom</span>
@@ -50,7 +50,11 @@
         </div>
       </div>
 
+      <% total_portefeuille = 0 %>
       <% @private_bottles.each do |batch, qty| %>
+
+      <% total_portefeuille += batch.current_price * qty %>
+
         <%= link_to batch_path(batch), class:"text-decoration-none" do %>
           <div class="card-element">
             <div class="card-avatar">
@@ -75,6 +79,9 @@
       <% end %>
     </div>
 
+    <div class="section">
+      <h3 class="text-end">Total: € <%=number_with_delimiter(total_portefeuille, :delimiter => ',')%></h3>
+    </div>
   <%# Faire partial %>
     <div class="section">
       <h3>Mes ventes</h3>

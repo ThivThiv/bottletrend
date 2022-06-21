@@ -37,7 +37,7 @@ class TransactionsController < ApplicationController
       @bottles = Bottle.find_or_create_for_batch(@batch, params[:transaction][:quantity].to_i)
       Transaction.build_for_bottles(@bottles, current_user)
     end
-    redirect_to collection_path
+    redirect_to collection_path, notice: "Merci pour votre achat!"
   end
 
   def update
