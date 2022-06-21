@@ -38,4 +38,9 @@
       <%= link_to 'Revendre', "#", class: "btn-jaune"  %>
     <% end %>
   </div>
+
+  <div class= "section">
+    <%= line_chart @batch.bottles.group_by_month(:created_at).count, colors: ["#8F2D56"]%>
+  </div>
+
 </div>

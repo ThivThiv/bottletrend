@@ -25,6 +25,9 @@ class Transaction < ApplicationRecord
       balance = user.balance
       transaction.bottle = bottle
 
+      #ajoute Sam pour faire des transactions
+      transaction.price = bottle.batch.current_price
+
       if transaction.sold_between_users?
         old_price = bottle.last_transaction.price
         transaction.price = self.compute_price(old_price, bottle.batch)
