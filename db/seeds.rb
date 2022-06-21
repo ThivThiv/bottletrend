@@ -20,19 +20,22 @@ User.destroy_all
 puts 'Creating user 1'
 user1 = User.create!(
   email: 'user1@gmail.com',
-  password: 'password'
+  password: 'password',
+  balance: 3000
 )
 
 puts 'Creating user 2'
 user2 = User.create!(
   email: 'user2@gmail.com',
-  password: 'password'
+  password: 'password',
+  balance: 3000
 )
 
 puts 'Creating user 3'
 user3 = User.create!(
   email: 'user3@gmail.com',
-  password: 'password'
+  password: 'password',
+  balance: 3000
 )
 
 puts "Creating domains Malartic Lagraviere..."
@@ -108,7 +111,7 @@ b3 = Batch.new(
   quantity: 100,
   initial_price: 90,
   domain: latour,
-  description: "e premier millésime de ce vin voit le jour en 1989 avec l'objectif de proposer une approche plus accessible du Château Latour. Il est élaboré avec les raisins des jeunes vignes du domaine. Toutes les étapes de fabrication sont dirigées avec soin. Il est élevé en fût pendant 1 an environ avec un renouvellement en bois neuf de 20%. Il est recommandé de le garder au moins 5 ans en bouteille avant dégustation.",
+  description: "Le premier millésime de ce vin voit le jour en 1989 avec l'objectif de proposer une approche plus accessible du Château Latour. Il est élaboré avec les raisins des jeunes vignes du domaine. Toutes les étapes de fabrication sont dirigées avec soin. Il est élevé en fût pendant 1 an environ avec un renouvellement en bois neuf de 20%. Il est recommandé de le garder au moins 5 ans en bouteille avant dégustation.",
   year: 2017,
   potential: 3,
   region: "Bordeaux"
