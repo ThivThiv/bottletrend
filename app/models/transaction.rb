@@ -23,6 +23,7 @@ class Transaction < ApplicationRecord
       transaction.user = user
       balance = user.balance
       transaction.bottle = bottle
+      transaction.price = bottle.batch.current_price
 
       if transaction.sold_between_users?
         old_price = bottle.batch.current_price
