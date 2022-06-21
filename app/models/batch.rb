@@ -34,7 +34,9 @@ class Batch < ApplicationRecord
 
   def available_users_stock
     self.bottles.map(&:last_transaction).select do |t|
-      t.on_resale == true
+      if t
+        t.on_resale == true
+      end
     end.count
   end
 

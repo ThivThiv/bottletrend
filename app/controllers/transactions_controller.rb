@@ -36,8 +36,12 @@ class TransactionsController < ApplicationController
     ActiveRecord::Base.transaction do
       @bottles = Bottle.find_or_create_for_batch(@batch, params[:transaction][:quantity].to_i)
       Transaction.build_for_bottles(@bottles, current_user)
+      if Transaction.build_for_bottles(@bottles, current_user).empty?
+        redirect_to collection_path, alert: "Contactez nous. Vous n'avez pas suffisament d'argent dans votre wallet!"
+      else
+        redirect_to collection_path, notice: "Merci pour votre achat!"
+      end
     end
-    redirect_to collection_path
   end
 
   def update
