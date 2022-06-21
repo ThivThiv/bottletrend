@@ -10,6 +10,7 @@ class BatchesController < ApplicationController
   end
 
   def show
+    @transaction = Transaction.new
     @domain = Domain.find(@batch.domain_id)
   end
 

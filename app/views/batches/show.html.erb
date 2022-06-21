@@ -34,17 +34,38 @@
       <p><strong>Description : </strong><br><%= @batch.description %></p>
     </div>
   </div>
-  <div class="trade-button" style = "display: flex; justify-content: space-around;">
-    <% if @batch.available? %>
-      <%= link_to 'Acheter', new_batch_transaction_path(@batch), class: "btn-mauve" %>
-    <% end %>
-    <% if current_user.can_sell_from_batch?(@batch) %>
-      <%= link_to 'Revendre', batch_resale_path(@batch), class: "btn-jaune"  %>
-    <% end %>
+
+  <div class="trade-button">
+    <div>
+      <% if @batch.available? %>
+        <button class="btn-mauve" role="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Acheter
+        </button>
+      <div class="collapse" id="collapseExample">
+        <div class="card">
+          <div data-controller="max-quantity" data-max-quantity-domain-value="<%= @batch.available_domain_stock %>" data-max-quantity-users-value="<%= @batch.available_users_stock %>">
+          <%= simple_form_for([@batch, @transaction]) do |f| %>
+            <%= f.input :quantity, input_html: { data: { max_quantity_target: :input,  action: "keyup->max-quantity#available"} } %>
+              <div class="flash flash-danger alert-dismissible fade show d-none" role="alert" data-max-quantity-target="alert">
+                <span><strong>Oops!</strong> 😱 Not enough stock available.</span>
+              </div>
+
+            <div class="btn btn-mauve" style="padding: 0px 3px;" role="button" data-disable-button-target="button">
+              <%= f.button :submit, "Submit", input_html: { data: { disable_button_target: "button", action: "input->disable-button#disable"} } %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+      <% if current_user.can_sell_from_batch?(@batch) %>
+        <%= link_to 'Revendre', batch_resale_path(@batch), class: "btn-jaune"  %>
+      <% end %>
   </div>
 
   <div class= "section">
     <%= line_chart @batch.bottles.group_by_month(:created_at).count, colors: ["#8F2D56"]%>
   </div>
-
 </div>
