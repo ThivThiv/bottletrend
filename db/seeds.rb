@@ -139,6 +139,7 @@ users = [user1, user2, user3]
 130.times do
   b = Bottle.new()
   b.batch = batches.sample
+  b.created_at = rand((DateTime.now - 3.months)..DateTime.now)
   b.save!
   t = Transaction.new
   t.bottle = b
@@ -150,6 +151,7 @@ batch = Batch.find_by_name("Les Forts de Latour")
 batch.available_domain_stock.times do
   b = Bottle.new
   b.batch = batch
+  b.created_at = rand((DateTime.now - 3.months)..DateTime.now)
   b.save!
   t = Transaction.new
   t.bottle = b
