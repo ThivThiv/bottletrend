@@ -9,13 +9,11 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("hello")
   }
 
   available() {
     const inputValue = Number(this.inputTarget.value)
     const stockValue = Number(this.domainValue) + Number(this.usersValue)
-    console.log(stockValue)
       if (inputValue > stockValue) {
         this.alertTarget.classList.remove('d-none')
       } else {
