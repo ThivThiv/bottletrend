@@ -13,7 +13,8 @@
       <%= @batch.photo.attached? ? cl_image_tag(@batch.photo.key, height: 150, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
       <div class="card-bottle-description">
         <div class="price-trend">
-          <h2> <strong>Prix:</strong> <%= @batch.initial_price %>€</h2>
+        <%# Que si domaine stock > 0 %>
+          <h2> <strong>Prix:</strong> <%= @batch.current_price %>€</h2>
           <div class="domain-card-trend">
             <p><i class="fa-solid fa-arrow-trend-up"></i></p>
           </div>
@@ -30,13 +31,11 @@
     </div>
   </div>
   <div class="trade-button" style = "display: flex; justify-content: space-around;">
-    <% if @batch.available_domain_stock == 0 && @batch.available_users_stock > 0 %>
-      <%= link_to 'Revendre', "#", class: "btn-mauve"  %>
-      <%= link_to 'Acheter', new_batch_transaction_path(@batch), class: "btn-jaune" %>
-    <% elsif @batch.available_domain_stock == 0 && @batch.available_users_stock == 0 %>
+    <% if @batch.available? %>
+      <%= link_to 'Acheter', new_batch_transaction_path(@batch), class: "btn-mauve" %>
+    <% end %>
+    <% if current_user.can_sell_from_batch?(@batch) %>
       <%= link_to 'Revendre', "#", class: "btn-jaune"  %>
-    <% else %>
-      <%= link_to 'Acheter', new_batch_transaction_path(@batch), class: "btn-jaune" %>
     <% end %>
   </div>
 </div>
