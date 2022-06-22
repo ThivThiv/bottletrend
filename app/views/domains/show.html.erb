@@ -11,12 +11,27 @@
 
   <div class= "container">
     <div style= "section">
-      <p>Année de création : <%= @domain.year %></p>
-      <p>Description : <br><%= @domain.description %></p>
+      <h3>Année de création:</h3><p><%= @domain.year %></p>
+      <h3>Description:</h3> <p><%= @domain.description %></p>
     </div>
 
     <div style= "section">
       <h2>Nos cuvées</h2>
+
+      <div class="header-infos-home">
+        <div class="name">
+          <span>Nom</span>
+        </div>
+
+        <div class="price header-position">
+          <span>Prix</span>
+        </div>
+
+        <div class="trend header-position">
+          <span>Tendance</span>
+        </div>
+      </div>
+
       <% @domain.batches.each do |batch| %>
         <%= link_to bottle_path(batch), class:"text-decoration-none" do %>
           <div class="card-element">
@@ -28,11 +43,11 @@
               <p><%= batch.domain.name %></p>
             </div>
             <div class="batch-card-price">
-              <p>230€</p>
+              <p><%=batch.current_price%></p>
             </div>
             <div class="batch-card-trend">
-              <p>+30%</p>
-              <p>+45€</p>
+              <p><%=batch.pourcent_trend%> <%unless batch.pourcent_trend == "-"%> % <% end %></p>
+              <p>+<%=batch.price_trend%> €</p>
             </div>
           </div>
         <% end %>

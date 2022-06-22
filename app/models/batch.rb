@@ -67,4 +67,17 @@ class Batch < ApplicationRecord
     }
     return tableau[:"#{self.year}"][:"#{self.region}"]
   end
+
+  def pourcent_trend
+    if current_price.to_f / initial_price.to_f == 1
+      "-"
+    else
+      (current_price / initial_price.to_f).truncate(1)
+    end
+  end
+
+  def price_trend
+    @price_difference = (self.current_price - self.initial_price.to_f).truncate(2)
+  end
+
 end

@@ -45,8 +45,8 @@
           </div>
 
           <div class="batch-card-trend">
-            <p>+30%</p>
-            <p>+45€</p>
+            <p><%=batch.pourcent_trend%> <%unless batch.pourcent_trend == "-"%> % <% end %></p>
+            <p>+<%=batch.price_trend%> €</p>
           </div>
         </div>
       <% end %>
