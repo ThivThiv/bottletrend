@@ -53,4 +53,10 @@ class User < ApplicationRecord
   def can_sell_from_batch?(batch)
     kept_bottles_by_batch.has_key?(batch) && batch.available_domain_stock == 0
   end
+
+  def credit(amount)
+    self.balance += amount
+    self.save
+  end
+
 end

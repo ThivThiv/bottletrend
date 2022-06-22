@@ -20,23 +20,27 @@ class Transaction < ApplicationRecord
 
   def self.build_for_bottles(bottles, user)
     transactions = []
+    transaction_price = bottles.first.batch.current_price
+    computed_price = self.compute_price(transaction_price, bottles.first.batch)
     bottles.each do |bottle|
       transaction = Transaction.new
       transaction.user = user
-      balance = user.balance
       transaction.bottle = bottle
-      transaction.price = bottle.batch.current_price
 
       if transaction.sold_between_users?
-        old_price = transaction.price
-        transaction.price = self.compute_price(old_price, bottle.batch)
+        transaction.price = computed_price
+        seller = bottle.last_transaction.user
       end
 
-      if user.balance > transaction.price
-        transaction.save
-        transactions << transaction
-        balance -= transaction.price
-        user.update(balance: balance)
+      return transactions unless user.balance > transaction_price
+
+      transaction.save
+      transactions << transaction
+      # DEBIT de l'acheteur
+      user.credit(-transaction_price)
+      # CRédite le vendeur si il existe
+      if seller
+        seller.credit(transaction_price)
       end
     end
 
