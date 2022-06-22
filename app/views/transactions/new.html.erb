@@ -25,7 +25,7 @@
     </div>
 
     <div data-controller="max-quantity" data-max-quantity-domain-value="<%= @batch.available_domain_stock %>" data-max-quantity-users-value="<%= @batch.available_users_stock %>">
-      <%= simple_form_for([@batch, @transaction]) do |f| %>
+      <%= simple_form_for(@batch,method: :post, url: batch_resale_path(@batch)) do |f| %>
         <%= f.input :quantity, input_html: { data: { max_quantity_target: :input,  action: "keyup->max-quantity#available"} } %>
         <div class="flash flash-danger alert-dismissible fade show d-none" role="alert" data-max-quantity-target="alert">
           <span><strong>Oops!</strong> 😱 Not enough stock available.</span>
