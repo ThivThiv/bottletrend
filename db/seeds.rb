@@ -138,13 +138,16 @@ batches = [b1, b2, b3, b4]
 users = [user1, user2, user3]
 200.times do
   b = Bottle.new()
-  b.batch = batches.sample
-  b.created_at = rand((DateTime.now - 3.months)..DateTime.now)
-  b.save!
-  t = Transaction.new
-  t.bottle = b
-  t.user = users.sample
-  t.save!
+  batch = batches.sample
+  if batch.available_domain_stock > 0
+    b.batch = batch
+    b.created_at = rand((DateTime.now - 3.months)..DateTime.now)
+    b.save!
+    t = Transaction.new
+    t.bottle = b
+    t.user = users.sample
+    t.save!
+  end
 end
 
 batch = Batch.find_by_name("Les Forts de Latour")
@@ -159,7 +162,7 @@ batch.available_domain_stock.times do
   t.save!
 end
 
-users.last.transactions.last(20).each do |transaction|
+Batch.find_by_name("Les Forts de Latour").bottles.last(5).map(&:last_transaction).each do |transaction|
   transaction.on_resale = true
   transaction.save
 end
