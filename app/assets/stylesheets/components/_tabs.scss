@@ -21,6 +21,21 @@
   }
 }
 
+.tab-collection {
+  margin: 0px 10px;
+  font-size: 18px;
+  color: $gris;
+
+  &[aria-selected="true"] {
+    font-weight: 500;
+    color: black;
+    font-size: calc(1.325rem + 0.9vw);
+    padding: 3px 15px;
+    border-bottom: 3px solid $bleuciel;
+  }
+}
+
+
 .nav-onglets {
   display: flex;
   justify-content: flex-start;
