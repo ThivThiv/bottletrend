@@ -26,7 +26,6 @@
           <% @private_bottles.each do |key, value| %>
             <% @name_hash_for_pie_chart[key.name] = value %>
           <% end %>
-
           <%= pie_chart @name_hash_for_pie_chart %>
 
         </div>
