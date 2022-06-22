@@ -4,8 +4,7 @@ export default class extends Controller {
 
   static targets = ["input", "alert", "sale"]
   static values = {
-    domain: Number,
-    users: Number,
+    stock: Number,
     user: Number
   }
 
@@ -15,7 +14,7 @@ export default class extends Controller {
 
   available() {
     const inputValue = Number(this.inputTarget.value)
-    const stockValue = Number(this.domainValue) + Number(this.usersValue)
+    const stockValue = Number(this.stockValue)
 
       if (inputValue > stockValue) {
         this.alertTarget.classList.remove('d-none')

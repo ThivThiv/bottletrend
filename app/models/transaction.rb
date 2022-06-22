@@ -23,10 +23,9 @@ class Transaction < ApplicationRecord
     transaction_price = bottles.first.batch.current_price
     computed_price = self.compute_price(transaction_price, bottles.first.batch)
     bottles.each do |bottle|
-      next if bottle.last_transaction.user == buyer
-      transaction = Transaction.new
-      transaction.user = buyer
-      transaction.bottle = bottle
+    transaction = Transaction.new
+    transaction.user = buyer
+    transaction.bottle = bottle
 
       if transaction.sold_between_users?
         transaction.price = computed_price
