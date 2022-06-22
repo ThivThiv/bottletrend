@@ -18,13 +18,14 @@ class Transaction < ApplicationRecord
     price.round
   end
 
-  def self.build_for_bottles(bottles, user)
+  def self.build_for_bottles(bottles, buyer)
     transactions = []
     transaction_price = bottles.first.batch.current_price
     computed_price = self.compute_price(transaction_price, bottles.first.batch)
     bottles.each do |bottle|
+      next if bottle.last_transaction.user == buyer
       transaction = Transaction.new
-      transaction.user = user
+      transaction.user = buyer
       transaction.bottle = bottle
 
       if transaction.sold_between_users?
@@ -32,12 +33,12 @@ class Transaction < ApplicationRecord
         seller = bottle.last_transaction.user
       end
 
-      return transactions unless user.balance > transaction_price
+      return transactions unless buyer.balance > transaction_price
 
       transaction.save
       transactions << transaction
       # DEBIT de l'acheteur
-      user.credit(-transaction_price)
+      buyer.credit(-transaction_price)
       # CRédite le vendeur si il existe
       if seller
         seller.credit(transaction_price)
