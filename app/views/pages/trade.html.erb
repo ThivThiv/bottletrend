@@ -80,7 +80,6 @@
                 <span>Tendance</span>
               </div>
             </div>
-<% console%>
             <% @batches.each do |batch| %>
               <%= link_to bottle_path(batch), class:"text-decoration-none" do %>
                 <% if batch.available_users_stock > 0 %>
