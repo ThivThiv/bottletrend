@@ -136,7 +136,7 @@ b4.save
 
 batches = [b1, b2, b3, b4]
 users = [user1, user2, user3]
-130.times do
+200.times do
   b = Bottle.new()
   b.batch = batches.sample
   b.created_at = rand((DateTime.now - 3.months)..DateTime.now)

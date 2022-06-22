@@ -4,3 +4,13 @@
   right: 16px;
   z-index: 1000;
 }
+
+.is-valid {
+  border: 1px solid #ced4da;
+  border-color: #ced4da !important;
+  background-image: none !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 2px;
+}

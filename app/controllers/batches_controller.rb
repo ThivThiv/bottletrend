@@ -12,6 +12,7 @@ class BatchesController < ApplicationController
   def show
     @transaction = Transaction.new
     @domain = Domain.find(@batch.domain_id)
+    @current_user_bottles = current_user.kept_bottles_by_batch[@batch]
   end
 
   private
