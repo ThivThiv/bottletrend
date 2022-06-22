@@ -5,6 +5,7 @@ class DomainsController < ApplicationController
   end
 
   def show
+
   end
 
   private

@@ -19,7 +19,7 @@
 
     <div id= "wallet-search-bar">
     <%if user_signed_in?%>
-      <p class="text-end my-auto"> <i class="fa-solid fa-wallet"></i> <%= number_with_delimiter(current_user.balance, :delimiter => ',')%></p>
+      <p class="text-end my-auto"> <i class="fa-solid fa-wallet"></i> € <%= number_with_delimiter(current_user.balance, :delimiter => ',')%></p>
     <% end %>
     </div>
 
