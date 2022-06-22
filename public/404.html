@@ -6,14 +6,13 @@
   <style>
 
   .rails-default-error-page {
-
-    background-image: url("https://images.unsplash.com/photo-1651481409068-1268a3d9ed42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=476&q=80");
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1651481409068-1268a3d9ed42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=476&q=80");
     background-position: center;
     background-size: cover;
     color: white;
     text-align: left;
     font-family: arial, sans-serif;
-    margin: 0;
+    height: 650px;
   }
 
   .rails-default-error-page div.dialog {
@@ -21,22 +20,7 @@
     max-width: 33em;
     margin: 50% auto;
     display: block;
-    /* justify-content: center;
-    margin: 0 auto; */
   }
-
-  /* .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  } */
 
   .rails-default-error-page h1 {
     font-size: 6em;
@@ -57,13 +41,17 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  .error-code {
+    text-align: center;
+  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div class="404">
+    <div class="error-code">
       <h1>404</h1>
     </div>
     <div class = text>
