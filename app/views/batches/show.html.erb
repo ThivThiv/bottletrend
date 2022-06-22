@@ -21,11 +21,7 @@
         <br>
         <p><strong>Region</strong> : <%= @batch.region %></p>
         <p><strong>Bouteilles produites : </strong> <%= @batch.quantity %></p>
-        <% if @batch.available_domain_stock.positive? %>
-          <p><strong>Stock</strong> : <%= @batch.available_domain_stock %> (Domaine)</p>
-        <% else %>
-          <p><strong>Stock</strong> : <%= @batch.available_users_stock %> (Utilisateurs)</p>
-        <% end %>
+        <p><strong>Stock</strong> : <%= @display_stock %></p>
         <p><strong>Année:</strong> : <%= @batch.year %></p>
         <p><strong>Potentiel : </strong> <%= @batch.potential %>/5</p>
         <p><strong>En possession :</strong> <%= @current_user_bottles %></p>
@@ -38,7 +34,7 @@
 
   <div class="trade-button" data-controller= "collapse">
     <div style="width:50%;">
-      <% if @batch.available? %>
+      <% if @can_buy %>
         <div class="button-trade">
           <button class="btn-mauve" data-action="click->collapse#openb">
             Acheter
