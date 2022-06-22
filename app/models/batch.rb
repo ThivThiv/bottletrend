@@ -24,12 +24,7 @@ class Batch < ApplicationRecord
   end
 
   def available_domain_stock
-    @bottles = self.bottles
-    @buyed_bottles = []
-    @bottles.each do |bottle|
-      @buyed_bottles << Transaction.where(bottle: bottle)
-    end
-    return self.quantity - @buyed_bottles.count
+    self.quantity - self.bottles.count
   end
 
   def available_users_stock
@@ -41,7 +36,7 @@ class Batch < ApplicationRecord
   end
 
   def available?
-    available_domain_stock + available_users_stock > 0
+    (available_domain_stock + available_users_stock) > 0
   end
 
   def quality
