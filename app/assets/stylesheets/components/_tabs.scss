@@ -21,6 +21,20 @@
   }
 }
 
+.tab-collection {
+  margin: 0px 10px;
+  font-size: 14px;
+
+  &[aria-selected="true"] {
+    font-weight: 600;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 3px 15px;
+  }
+}
+
+
 .nav-onglets {
   display: flex;
   justify-content: flex-start;
