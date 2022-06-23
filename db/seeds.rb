@@ -61,7 +61,7 @@ puts "Creating domains Chateau Latour..."
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376340/domaine-chateau-latour_ctp4s1.webp')
 latour = Domain.new(
   year: 1331,
-  name: "Chateau Latour",
+  name: "Château Latour",
   description: "Le domaine de Château Latour a été au cœur de l’histoire de sa région et la connaissance du passé nous est précieuse pour mieux comprendre aujourd’hui l’origine de la renommée de la Propriété. La présence d’archives importantes conservées au fil des siècles nous permet d’effectuer ce voyage dans le temps avec suffisamment de précision. Cet héritage unique nous montre une extraordinaire stabilité et une vraie continuité dans la vie de la propriété et de ses artisans au fil des siècles expliquant ainsi en partie la grande régularité dans la qualité des vins.",
   popularity: 5
 )
@@ -72,17 +72,30 @@ puts "Creating domains Chateau Margaux..."
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376517/chateau-margaux_l8ob5z.jpg')
 margaux = Domain.new(
   year: 1500,
-  name: "Chateau Margaux",
+  name: "Château Margaux",
   description: "En ce début de XXIème siècle, les vins de Bordeaux connaissent un succès sans précédent. Le monde entier semble avoir les yeux rivés sur Bordeaux et la demande ne cesse de croître. Cette prospérité ainsi que l’essor de nombreuses autres régions du monde ont placé Château Margaux dans un climat plus concurrentiel et ont aussi permis d’en souligner le positionnement unique : celui d’un Premier Grand Cru Classé en 1855 jouissant d’un terroir façonné au fil des siècles.  ",
   popularity: 5
 )
 margaux.photo.attach(io: file, filename: "domain-chateau-margaux.jpg", content_type: 'image/jpg')
 margaux.save
 
+puts "Creating domains Chateau Margaux..."
+file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655999258/Img1_MAGREZ_CORPO_GRAND_CRU_PapeClement-min_otemkg.jpg')
+clement = Domain.new(
+  year: 1252,
+  name: "Château Pape Clément",
+  description: "Proche de Bordeaux, partez à la découverte des 7 siècles d’histoire d’un Grand Cru Classé mythique des Graves entouré de vignes et doté d’un somptueux jardin. Un château unique dont les premières vendanges ont été effectuées en 1252."
+  popularity: 5
+)
+clement.photo.attach(io: file, filename: "domain-chateau-pape-clement.jpg", content_type: 'image/jpg')
+clement.save
+
+
+
 puts "Creating batch Chateau Malartic Lagraviere"
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376350/mlr2019_oci28o.png')
 b1 = Batch.new(
-  name: "Chateau Malartic Lagraviere",
+  name: "Château Malartic Lagraviere",
   quantity: 60,
   initial_price: 130,
   domain: malartic,
@@ -142,9 +155,9 @@ b4.photo.attach(io: file, filename: "bottle-chateau-margaux.jpg", content_type: 
 b4.save
 
 puts "Creating batch Chassagne Montrachet"
-file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655383734/chateau-margaux-2017-1er-cru-classe_bkszcq.png")
+file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655998313/chassagne-montrachet-rouge-2019-louis-latour_eilggs.png")
 b5 = Batch.new(
-  name: "Chateau Chassagne Montrachet",
+  name: "Château Chassagne Montrachet",
   quantity: 60,
   initial_price: 125,
   domain: margaux,
@@ -153,8 +166,23 @@ b5 = Batch.new(
   potential: 3,
   region: "Bourgogne"
 )
-b5.photo.attach(io: file, filename: "bottle-chateau-margaux.jpg", content_type: 'image/png')
+b5.photo.attach(io: file, filename: "bottle-chassagne-montrachet.jpg", content_type: 'image/png')
 b5.save
+
+puts "Creating batch Chateau Pape Clement 2018"
+file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655999354/chateau-pape-clement-2004-grand-cru-classe_xple6e.png")
+b6 = Batch.new(
+  name: "Château Pape Clement",
+  quantity: 60,
+  initial_price: 99,
+  domain: margaux,
+  description: "Un très grand millésime ! Un des plus beaux châteaux de Pessac-Léognan. D'une qualité admirable ce vin est à la fois concentré, fin et harmonieux, présentant une palette aromatique aussi large que précise",
+  year: 2018,
+  potential: 4,
+  region: "Bordeau"
+)
+b6.photo.attach(io: file, filename: "bottle-chassagne-montrachet.jpg", content_type: 'image/png')
+b6.save
 
 users = [user1, user2, user3]
 57.times do
