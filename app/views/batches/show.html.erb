@@ -27,7 +27,9 @@
         <p><strong>Stock</strong> : <%= @display_stock %></p>
         <p><strong>Année:</strong> : <%= @batch.year %></p>
         <p><strong>Potentiel : </strong> <%= @batch.potential %>/5</p>
-        <p><strong>En possession :</strong> <%= @current_user_bottles %></p>
+        <% if @current_user_bottles.nil? == false %>
+          <p><strong>En possession :</strong> <%= @current_user_bottles %></p>
+        <% end %>
       </div>
     </div>
     <div class="card-bottle-description">
