@@ -73,24 +73,22 @@ file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376517/c
 margaux = Domain.new(
   year: 1500,
   name: "Château Margaux",
-  description: "En ce début de XXIème siècle, les vins de Bordeaux connaissent un succès sans précédent. Le monde entier semble avoir les yeux rivés sur Bordeaux et la demande ne cesse de croître. Cette prospérité ainsi que l’essor de nombreuses autres régions du monde ont placé Château Margaux dans un climat plus concurrentiel et ont aussi permis d’en souligner le positionnement unique : celui d’un Premier Grand Cru Classé en 1855 jouissant d’un terroir façonné au fil des siècles.  ",
+  description: "En ce début de XXIème siècle, les vins de Bordeaux connaissent un succès sans précédent. Le monde entier semble avoir les yeux rivés sur Bordeaux et la demande ne cesse de croître. Cette prospérité ainsi que l’essor de nombreuses autres régions du monde ont placé Château Margaux dans un climat plus concurrentiel et ont aussi permis d’en souligner le positionnement unique : celui d’un Premier Grand Cru Classé en 1855 jouissant d’un terroir façonné au fil des siècles.",
   popularity: 5
 )
 margaux.photo.attach(io: file, filename: "domain-chateau-margaux.jpg", content_type: 'image/jpg')
 margaux.save
 
-puts "Creating domains Chateau Margaux..."
-file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655999258/Img1_MAGREZ_CORPO_GRAND_CRU_PapeClement-min_otemkg.jpg')
-clement = Domain.new(
-  year: 1252,
-  name: "Château Pape Clément",
-  description: "Proche de Bordeaux, partez à la découverte des 7 siècles d’histoire d’un Grand Cru Classé mythique des Graves entouré de vignes et doté d’un somptueux jardin. Un château unique dont les premières vendanges ont été effectuées en 1252."
-  popularity: 5
-)
-clement.photo.attach(io: file, filename: "domain-chateau-pape-clement.jpg", content_type: 'image/jpg')
-clement.save
-
-
+# puts "Creating domains Pape Clément..."
+# file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655999258/Img1_MAGREZ_CORPO_GRAND_CRU_PapeClement-min_otemkg.jpg')
+# clement = Domain.new(
+#   year: 1252,
+#   name: "Château Pape Clément",
+#   description: "Proche de Bordeaux, partez à la découverte des 7 siècles d’histoire d’un Grand Cru Classé mythique des Graves entouré de vignes et doté d’un somptueux jardin. Un château unique dont les premières vendanges ont été effectuées en 1252.",
+#   popularity: 5
+# )
+# clement.photo.attach(io: file, filename: "domain-chateau-pape-clement.jpg", content_type: 'image/jpg')
+# clement.save
 
 puts "Creating batch Chateau Malartic Lagraviere"
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376350/mlr2019_oci28o.png')
@@ -187,7 +185,7 @@ b6.save
 users = [user1, user2, user3]
 57.times do
   b = Bottle.new()
-  batch = Batch.find_by_name("Chateau Malartic Lagraviere")
+  batch = Batch.find_by_name("Château Malartic Lagraviere")
   if batch.available_domain_stock > 0
     b.batch = batch
     b.created_at = rand((DateTime.now - 3.months)..DateTime.now)
