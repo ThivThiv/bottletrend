@@ -1,0 +1,38 @@
+.modal-container {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.modal-buyed-bottle {
+  background-color: $bleuciel;
+  color: white;
+  height: 100px;
+  width: 250px;
+  text-align: center;
+  padding: 4vmin;
+  opacity: 0;
+  // transition: 0.2s ease;
+  pointer-events: none;
+  &.active {
+    animation: displayModal 5s ease forwards;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}

@@ -1,147 +1,136 @@
-<div class="banner-solde">
-  <div class="content-solde">
-    <p>Solde total</p>
-    <span id="money">€ <%=number_with_delimiter(@current_user.balance, :delimiter => ',')%></span>
-  </div>
-</div>
-
-
-
-<div class="card-collection">
-  <div class="container" id="collection-container">
-    <div class="section collection-actions">
-      <div class="actions">
-        <a class="btn-bleuciel btn-circle" href="/"><i class="fa-solid fa-angles-down"></i></a>
-        <a class="btn-bleuciel btn-circle" href="/"><i class="fa-solid fa-basket-shopping"></i></a>
-        <a class="btn-bleuciel btn-circle" href="/"><i class="fa-solid fa-champagne-glasses"></i></a>
-      </div>
+<div data-controller="toggle-modal">
+  <div class="banner-solde">
+    <div class="content-solde">
+      <p>Solde total</p>
+      <span id="money">€ <%=number_with_delimiter(@current_user.balance, :delimiter => ',')%></span>
     </div>
+  </div>
 
-    <div class="section collection-section">
-      <h2>Mon portefeuille</h2>
-      <div class="dashboard-infos">
-        <div class="section">
-          <% @name_hash_for_pie_chart = {} %>
-          <% @private_bottles.each do |key, value| %>
-            <% @name_hash_for_pie_chart[key.name] = value %>
-          <% end %>
-          <%= pie_chart @name_hash_for_pie_chart %>
+  <div class="card-collection">
+    <div class="container" id="collection-container">
+      <div class="section collection-actions">
+        <div class="actions">
+          <a class="btn-bleuciel btn-circle" href="/"><i class="fa-solid fa-angles-down"></i></a>
+          <a class="btn-bleuciel btn-circle"
+          data-action="click->toggle-modal#displayModal">
+          <i class="fa-solid fa-basket-shopping"></i></a>
+          <a class="btn-bleuciel btn-circle" href="/"><i class="fa-solid fa-champagne-glasses"></i></a>
         </div>
       </div>
-    </div>
-
-    <div class="section collection-section">
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-achat" role="tabpanel" aria-labelledby="pills-achat-tab" tabindex="0">
-          <ul class="nav nav-pills nav-onglets mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <div class="tab-collection active" id="pills-domain-tab" data-bs-toggle="pill" data-bs-target="#pills-domain" type="button" role="tab" aria-controls="pills-domain" aria-selected="true">Ma collection</div>
-            </li>
-
-            <li class="nav-item" role="presentation">
-              <div class="tab-collection" id="pills-user-tab" data-bs-toggle="pill" data-bs-target="#pills-user" type="button" role="tab" aria-controls="pills-user" aria-selected="false">Mes ventes</div>
-            </li>
-          </ul>
-
-          <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-domain" role="tabpanel" aria-labelledby="pills-domain-tab" tabindex="0">
-              <div class="ma-collection">
-                <div class="header-infos-collection">
-                  <div class="name">
-                    <span>Nom</span>
-                  </div>
-
-                  <div class="total header-position">
-                    <span>Total</span>
-                  </div>
-
-                  <div class="trend header-position">
-                    <span>Tendance</span>
-                  </div>
-                </div>
-
-                <% total_portefeuille = 0 %>
-                <% @private_bottles.each do |batch, qty| %>
-
-                <% total_portefeuille += batch.current_price * qty %>
-
-                  <%= link_to batch_path(batch), class:"text-decoration-none" do %>
-                    <div class="card-element">
-                      <div class="card-avatar">
-                        <%= batch.photo.attached? ? cl_image_tag(batch.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
-                      </div>
-
-                      <div class="card-description">
-                        <h3><%= truncate(batch.name, length: 40)%> (<%= batch.year %>)</h3>
-                        <p><%= batch.domain.name %></p>
-                      </div>
-
-                      <div class="batch-card-total">
-                        <p><%=number_with_delimiter(batch.current_price * qty, :delimiter => ',')%>€</p>
-                        <p>Quantité: <%= qty %></p>
-                      </div>
-
-                      <div class="batch-card-trend">
-                        <p><%=batch.pourcent_trend%> <%unless batch.pourcent_trend == "-"%> % <% end %></p>
-                        <p>+<%=batch.price_trend%> €</p>
-                      </div>
+      <div class="section collection-section">
+        <h2>Mon portefeuille</h2>
+        <div class="dashboard-infos">
+          <div class="section">
+            <% @name_hash_for_pie_chart = {} %>
+            <% @private_bottles.each do |key, value| %>
+              <% @name_hash_for_pie_chart[key.name] = value %>
+            <% end %>
+            <%= pie_chart @name_hash_for_pie_chart %>
+          </div>
+        </div>
+      </div>
+      <div class="section collection-section">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-achat" role="tabpanel" aria-labelledby="pills-achat-tab" tabindex="0">
+            <ul class="nav nav-pills nav-onglets mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <div class="tab-collection active" id="pills-domain-tab" data-bs-toggle="pill" data-bs-target="#pills-domain" type="button" role="tab" aria-controls="pills-domain" aria-selected="true">Ma collection</div>
+              </li>
+              <li class="nav-item" role="presentation">
+                <div class="tab-collection" id="pills-user-tab" data-bs-toggle="pill" data-bs-target="#pills-user" type="button" role="tab" aria-controls="pills-user" aria-selected="false">Mes ventes</div>
+              </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-domain" role="tabpanel" aria-labelledby="pills-domain-tab" tabindex="0">
+                <div class="ma-collection">
+                  <div class="header-infos-collection">
+                    <div class="name">
+                      <span>Nom</span>
                     </div>
+                    <div class="total header-position">
+                      <span>Total</span>
+                    </div>
+                    <div class="trend header-position">
+                      <span>Tendance</span>
+                    </div>
+                  </div>
+                  <% total_portefeuille = 0 %>
+                  <% @private_bottles.each do |batch, qty| %>
+                  <% total_portefeuille += batch.current_price * qty %>
+                    <%= link_to batch_path(batch), class:"text-decoration-none" do %>
+                      <div class="card-element">
+                        <div class="card-avatar">
+                          <%= batch.photo.attached? ? cl_image_tag(batch.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
+                        </div>
+                        <div class="card-description">
+                          <h3><%= truncate(batch.name, length: 40)%> (<%= batch.year %>)</h3>
+                          <p><%= batch.domain.name %></p>
+                        </div>
+                        <div class="batch-card-total">
+                          <p><%=number_with_delimiter(batch.current_price * qty, :delimiter => ',')%>€</p>
+                          <p>Quantité: <%= qty %></p>
+                        </div>
+                        <div class="batch-card-trend">
+                          <p><%=batch.pourcent_trend%> <%unless batch.pourcent_trend == "-"%> % <% end %></p>
+                          <p>+<%=batch.price_trend%> €</p>
+                        </div>
+                      </div>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <br>
-                <h3 class="text-end">Total: <%=number_with_delimiter(total_portefeuille, :delimiter => ',')%>€</h3>
+                  <br>
+                  <h3 class="text-end">Total: <%=number_with_delimiter(total_portefeuille, :delimiter => ',')%>€</h3>
+                </div>
               </div>
-            </div>
-
-            <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0">
-              <div class="mes-ventes">
-                <div class="header-infos-collection">
-                  <div class="name">
-                    <span>Nom</span>
-                  </div>
-
-                  <div class="total header-position">
-                    <span>Total</span>
-                  </div>
-
-                  <div class="trend header-position">
-                    <span>Tendance</span>
-                  </div>
-                </div>
-
-                <% total_ventes = 0 %>
-                <% @on_resale_bottles.each do |batch, qty| %>
-                <% total_ventes += batch.current_price * qty %>
-                  <%= link_to batch_path(batch), class:"text-decoration-none" do %>
-                    <div class="card-element">
-                      <div class="card-avatar">
-                        <%= batch.photo.attached? ? cl_image_tag(batch.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
-                      </div>
-
-                      <div class="card-description">
-                        <h3><%= truncate(batch.name, length: 40)%> (<%= batch.year %>)</h3>
-                        <p><%= batch.domain.name %></p>
-                      </div>
-
-                      <div class="batch-card-total">
-                        <p><%= batch.current_price * qty %>€</p>
-                        <p>Quantité: <%= qty %></p>
-                      </div>
-
-                      <div class="batch-card-trend">
-                        <p><%=batch.pourcent_trend%> <%unless batch.pourcent_trend == "-"%> % <% end %></p>
-                        <p>+<%=batch.price_trend%> €</p>
-                      </div>
+              <div class="tab-pane fade" id="pills-user" role="tabpanel" aria-labelledby="pills-user-tab" tabindex="0">
+                <div class="mes-ventes">
+                  <div class="header-infos-collection">
+                    <div class="name">
+                      <span>Nom</span>
                     </div>
+                    <div class="total header-position">
+                      <span>Total</span>
+                    </div>
+                    <div class="trend header-position">
+                      <span>Tendance</span>
+                    </div>
+                  </div>
+                  <% total_ventes = 0 %>
+                  <% @on_resale_bottles.each do |batch, qty| %>
+                  <% total_ventes += batch.current_price * qty %>
+                    <%= link_to batch_path(batch), class:"text-decoration-none" do %>
+                      <div class="card-element">
+                        <div class="card-avatar">
+                          <%= batch.photo.attached? ? cl_image_tag(batch.photo.key, height: 50, width: 50, crop: :fill) : image_tag("https://images.unsplash.com/photo-1520732770642-f4d947ca9653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=815&q=80", width: 50, heigth: 50, crop: :fill) %>
+                        </div>
+                        <div class="card-description">
+                          <h3><%= truncate(batch.name, length: 40)%> (<%= batch.year %>)</h3>
+                          <p><%= batch.domain.name %></p>
+                        </div>
+                        <div class="batch-card-total">
+                          <p><%= batch.current_price * qty %>€</p>
+                          <p>Quantité: <%= qty %></p>
+                        </div>
+                        <div class="batch-card-trend">
+                          <p><%=batch.pourcent_trend%> <%unless batch.pourcent_trend == "-"%> % <% end %></p>
+                          <p>+<%=batch.price_trend%> €</p>
+                        </div>
+                      </div>
+                    <% end %>
                   <% end %>
-                <% end %>
-                <br>
-                <h3 class="text-end">Total: <%=number_with_delimiter(total_ventes, :delimiter => ',')%>€</h3>
+                  <br>
+                  <h3 class="text-end">Total: <%=number_with_delimiter(total_ventes, :delimiter => ',')%>€</h3>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="modal-container">
+    <div class="modal-buyed-bottle" data-toggle-modal-target="modal">
+      <h3>🥳 Vous avez effectué une vente!</h3>
     </div>
   </div>
 </div>
