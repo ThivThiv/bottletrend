@@ -207,3 +207,16 @@
   width: 100%;
   padding: 0px 20px;
 }
+
+.fleche {
+    i {
+      color: $vert;
+      font-size: 23px;
+  }
+}
+
+#card-achat-domaine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

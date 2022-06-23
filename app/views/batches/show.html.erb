@@ -19,6 +19,9 @@
           </div>
         </div>
         <br>
+        <% if @batch.current_price != @batch.initial_price %>
+          <p><strong>Prix initial</strong> : <%= @batch.initial_price %>€</p>
+        <% end %>
         <p><strong>Region</strong> : <%= @batch.region %></p>
         <p><strong>Bouteilles produites : </strong> <%= @batch.quantity %></p>
         <p><strong>Stock</strong> : <%= @display_stock %></p>
@@ -43,10 +46,7 @@
 
         <div class="opened-buy-tab" data-collapse-target="buyopen">
           <div class="card-form card-body">
-            <div
-              data-controller="max-quantity"
-              data-max-quantity-stock-value="<%= @stock %>"
-            >
+            <div data-controller="max-quantity" data-max-quantity-stock-value="<%= @stock %>">
               <%= simple_form_for([@batch, @transaction]) do |f| %>
                 <%= f.input :quantity, input_html: { data: { max_quantity_target: :input,  action: "keyup->max-quantity#available"} } %>
                   <div class="flash flash-danger alert-dismissible fade show d-none" id="flash-trade" role="alert" data-max-quantity-target="alert">
