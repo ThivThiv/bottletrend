@@ -152,40 +152,40 @@ b4 = Batch.new(
 b4.photo.attach(io: file, filename: "bottle-chateau-margaux.jpg", content_type: 'image/png')
 b4.save
 
-# puts "Creating batch Chassagne Montrachet"
-# file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655998313/chassagne-montrachet-rouge-2019-louis-latour_eilggs.png")
-# b5 = Batch.new(
-#   name: "Château Chassagne Montrachet",
-#   quantity: 60,
-#   initial_price: 125,
-#   domain: margaux,
-#   description: "Dominant sans grand mal toute l’appellation Margaux et d'une remarquable constance, Château Margaux produit des vins devenus mythiques tant le mariage rare de la finesse dans la densité, et de la fraîcheur dans l’opulence est réussi.",
-#   year: 2009,
-#   potential: 3,
-#   region: "Bourgogne"
-# )
-# b5.photo.attach(io: file, filename: "bottle-chassagne-montrachet.jpg", content_type: 'image/png')
-# b5.save
+puts "Creating batch Chassagne Montrachet"
+file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655998313/chassagne-montrachet-rouge-2019-louis-latour_eilggs.png")
+b5 = Batch.new(
+  name: "Château Chassagne Montrachet",
+  quantity: 60,
+  initial_price: 125,
+  domain: margaux,
+  description: "Dominant sans grand mal toute l’appellation Margaux et d'une remarquable constance, Château Margaux produit des vins devenus mythiques tant le mariage rare de la finesse dans la densité, et de la fraîcheur dans l’opulence est réussi.",
+  year: 2009,
+  potential: 3,
+  region: "Bourgogne"
+)
+b5.photo.attach(io: file, filename: "bottle-chassagne-montrachet.jpg", content_type: 'image/png')
+b5.save
 
-# puts "Creating batch Chateau Pape Clement 2018"
-# file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655999354/chateau-pape-clement-2004-grand-cru-classe_xple6e.png")
-# b6 = Batch.new(
-#   name: "Château Pape Clement",
-#   quantity: 60,
-#   initial_price: 99,
-#   domain: margaux,
-#   description: "Un très grand millésime ! Un des plus beaux châteaux de Pessac-Léognan. D'une qualité admirable ce vin est à la fois concentré, fin et harmonieux, présentant une palette aromatique aussi large que précise",
-#   year: 2018,
-#   potential: 4,
-#   region: "Bordeau"
-# )
-# b6.photo.attach(io: file, filename: "bottle-chassagne-montrachet.jpg", content_type: 'image/png')
-# b6.save
+puts "Creating batch Chateau Pape Clement 2018"
+file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655999354/chateau-pape-clement-2004-grand-cru-classe_xple6e.png")
+b6 = Batch.new(
+  name: "Château Pape Clement",
+  quantity: 60,
+  initial_price: 99,
+  domain: margaux,
+  description: "Un très grand millésime ! Un des plus beaux châteaux de Pessac-Léognan. D'une qualité admirable ce vin est à la fois concentré, fin et harmonieux, présentant une palette aromatique aussi large que précise",
+  year: 2018,
+  potential: 4,
+  region: "Bordeau"
+)
+b6.photo.attach(io: file, filename: "bottle-chassagne-montrachet.jpg", content_type: 'image/png')
+b6.save
 
 users = [user1, user2, user3]
 57.times do
   b = Bottle.new()
-  batch = Batch.find_by_name("Chateau Malartic Lagraviere")
+  batch = Batch.find_by_name("Château Malartic Lagraviere")
   if batch.available_domain_stock > 0
     b.batch = batch
     b.created_at = rand((DateTime.now - 3.months)..DateTime.now)
