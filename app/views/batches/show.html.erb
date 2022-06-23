@@ -19,6 +19,9 @@
           </div>
         </div>
         <br>
+        <% if @batch.current_price != @batch.initial_price %>
+          <p><strong>Prix initial</strong> : <%= @batch.initial_price %>€</p>
+        <% end %>
         <p><strong>Region</strong> : <%= @batch.region %></p>
         <p><strong>Bouteilles produites : </strong> <%= @batch.quantity %></p>
         <p><strong>Stock</strong> : <%= @display_stock %></p>
