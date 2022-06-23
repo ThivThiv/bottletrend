@@ -79,16 +79,16 @@ margaux = Domain.new(
 margaux.photo.attach(io: file, filename: "domain-chateau-margaux.jpg", content_type: 'image/jpg')
 margaux.save
 
-# puts "Creating domains Pape Clément..."
-# file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655999258/Img1_MAGREZ_CORPO_GRAND_CRU_PapeClement-min_otemkg.jpg')
-# clement = Domain.new(
-#   year: 1252,
-#   name: "Château Pape Clément",
-#   description: "Proche de Bordeaux, partez à la découverte des 7 siècles d’histoire d’un Grand Cru Classé mythique des Graves entouré de vignes et doté d’un somptueux jardin. Un château unique dont les premières vendanges ont été effectuées en 1252.",
-#   popularity: 5
-# )
-# clement.photo.attach(io: file, filename: "domain-chateau-pape-clement.jpg", content_type: 'image/jpg')
-# clement.save
+puts "Creating domains Pape Clément..."
+file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655999258/Img1_MAGREZ_CORPO_GRAND_CRU_PapeClement-min_otemkg.jpg')
+clement = Domain.new(
+  year: 1252,
+  name: "Château Pape Clément",
+  description: "Proche de Bordeaux, partez à la découverte des 7 siècles d’histoire d’un Grand Cru Classé mythique des Graves entouré de vignes et doté d’un somptueux jardin. Un château unique dont les premières vendanges ont été effectuées en 1252.",
+  popularity: 5
+)
+clement.photo.attach(io: file, filename: "domain-chateau-pape-clement.jpg", content_type: 'image/jpg')
+clement.save
 
 puts "Creating batch Chateau Malartic Lagraviere"
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376350/mlr2019_oci28o.png')
@@ -173,11 +173,11 @@ b6 = Batch.new(
   name: "Château Pape Clement",
   quantity: 60,
   initial_price: 99,
-  domain: margaux,
+  domain: clement,
   description: "Un très grand millésime ! Un des plus beaux châteaux de Pessac-Léognan. D'une qualité admirable ce vin est à la fois concentré, fin et harmonieux, présentant une palette aromatique aussi large que précise",
   year: 2018,
   potential: 4,
-  region: "Bordeau"
+  region: "Bordeaux"
 )
 b6.photo.attach(io: file, filename: "bottle-chassagne-montrachet.jpg", content_type: 'image/png')
 b6.save
