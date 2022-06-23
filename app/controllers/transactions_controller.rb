@@ -26,7 +26,7 @@ class TransactionsController < ApplicationController
     else
       render :new
     end
-    redirect_to batch_path(@batch)
+    redirect_to collection_path, alert: "Votre bouteille est en vente!"
   end
 
   def create
