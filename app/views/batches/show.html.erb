@@ -43,7 +43,10 @@
 
         <div class="opened-buy-tab" data-collapse-target="buyopen">
           <div class="card-form card-body">
-            <div data-controller="max-quantity" data-max-quantity-domain-value="<%= @batch.available_domain_stock %>" data-max-quantity-users-value="<%= @batch.available_users_stock %>">
+            <div
+              data-controller="max-quantity"
+              data-max-quantity-stock-value="<%= @stock %>"
+            >
               <%= simple_form_for([@batch, @transaction]) do |f| %>
                 <%= f.input :quantity, input_html: { data: { max_quantity_target: :input,  action: "keyup->max-quantity#available"} } %>
                   <div class="flash flash-danger alert-dismissible fade show d-none" id="flash-trade" role="alert" data-max-quantity-target="alert">

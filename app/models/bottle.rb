@@ -3,11 +3,11 @@ class Bottle < ApplicationRecord
   has_many :transactions, dependent: :destroy
   validates :batch, presence: true
 
-  def self.find_or_create_for_batch(batch, quantity)
+  def self.find_or_create_for_batch(batch, quantity, user)
     if batch.available_domain_stock > 0
       create_for_batch(batch, quantity)
     else
-      find_for_batch(batch, quantity)
+      find_for_batch(batch, quantity, user)
     end
   end
 
@@ -31,13 +31,13 @@ class Bottle < ApplicationRecord
     end
   end
 
-  def self.find_for_batch(batch, quantity)
+  def self.find_for_batch(batch, quantity, user)
     bottles = batch.bottles
     # on récupère la dernière transaction de chaque bouteille
     bottles_last_transactions = bottles.map(&:last_transaction)
     # on selectionne seulement les transaction (titre de propriété) disponible à la revente
     bottles_transactions_on_resale = bottles_last_transactions.select do |transaction|
-      transaction.on_resale
+      transaction.on_resale && transaction.user != user
     end
     # on récupère les N (quantity) bouteilles correspondant à ces transactions
     return bottles_transactions_on_resale.map do |transaction|
