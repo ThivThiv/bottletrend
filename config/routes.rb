@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     post "resale", to: "transactions#create_resale"
   end
 
-  match "/404", to: "errors#not_found", via: :all
-  match "/500", to: "errors#internal_server_error", via: :all
+  # match "/404", to: "errors#not_found", via: :all
+  # match "/500", to: "errors#internal_server_error", via: :all
 
 end
