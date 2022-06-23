@@ -79,6 +79,22 @@ margaux = Domain.new(
 margaux.photo.attach(io: file, filename: "domain-chateau-margaux.jpg", content_type: 'image/jpg')
 margaux.save
 
+puts "Creating domains Chateau Chassagne Montrachet..."
+file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1656010629/968505-560x373_zaw3ep.jpg')
+chassagne = Domain.new(
+  year: 1400,
+  name: "Château Chassagne Montrachet",
+  description: "Depuis plusieurs générations, les vins produits par la famille Picard représentent un travail sérieux, mené avec passion et plaisir.
+  Cette belle histoire a commencé grâce à un grand-père précurseur et un père, Michel, sensibilisé dès le plus jeune âge au terroir Bourguignon.
+  Aujourd’hui, ce sont Francine et Gabriel qui ont la responsabilité de ce patrimoine d’exception. La famille est propriétaire de parcelles de vignes sur les communes de Chassagne-Montrachet, Puligny-Montrachet, Saint-Aubin, Corton.
+  Toujours dans le respect de l’environnement, Francine Picard exploite aujourd’hui 135 hectares de vignes répartis sur un total de 5 domaines.
+  C’est ici que débute l’histoire de la troisième génération. Nous vous laissons la déguster !
+  Découvrez notre domaine viticole installé à Chassagne-Montrachet, afin d’y découvrir la cuverie, nos vins fins et notre caveau de vente.",
+  popularity: 5
+)
+chassagne.photo.attach(io: file, filename: "domain-chateau-chassagne.jpg", content_type: 'image/jpg')
+chassagne.save
+
 puts "Creating domains Pape Clément..."
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655999258/Img1_MAGREZ_CORPO_GRAND_CRU_PapeClement-min_otemkg.jpg')
 clement = Domain.new(
@@ -128,7 +144,7 @@ b3 = Batch.new(
   name: "Pauillac",
   quantity: 100,
   initial_price: 90,
-  domain: latour,
+  domain: margaux,
   description: "Le premier millésime de ce vin voit le jour en 1989 avec l'objectif de proposer une approche plus accessible du Château Latour. Il est élaboré avec les raisins des jeunes vignes du domaine. Toutes les étapes de fabrication sont dirigées avec soin. Il est élevé en fût pendant 1 an environ avec un renouvellement en bois neuf de 20%. Il est recommandé de le garder au moins 5 ans en bouteille avant dégustation.",
   year: 2017,
   potential: 3,
@@ -158,8 +174,10 @@ b5 = Batch.new(
   name: "Château Chassagne Montrachet",
   quantity: 60,
   initial_price: 125,
-  domain: margaux,
-  description: "Dominant sans grand mal toute l’appellation Margaux et d'une remarquable constance, Château Margaux produit des vins devenus mythiques tant le mariage rare de la finesse dans la densité, et de la fraîcheur dans l’opulence est réussi.",
+  domain: chassagne,
+  description: "La propriété: Au cœur de la Bourgogne, le Domaine Bader-Mimeur est issu d'un mariage entre Charles Bader - dont les parents étaient négociants en vins - et d'Elise Mimeur, fille de Charles Mimeur, propriétaire du Château de Chassagne-Montrachet.
+  Le vignoble:  D’une superficie totale de 8 hectares dans l'appellation de Chassagne-Montrachet, dont 5 hectares pour le Château de Chassagne-Montrachet, le vignoble du Domaine Bader-Mimeur rassemble du pinot noir et du chardonnay.
+  Dans le pur respect de son terroir le vignoble est conduit en lutte raisonnée.",
   year: 2009,
   potential: 3,
   region: "Bourgogne"
@@ -193,6 +211,20 @@ users = [user1, user2, user3]
     t = Transaction.new
     t.bottle = b
     t.user = users[0]
+    t.save!
+  end
+end
+
+59.times do
+  b = Bottle.new()
+  batch = Batch.find_by_name("Château Chassagne Montrachet")
+  if batch.available_domain_stock > 0
+    b.batch = batch
+    b.created_at = rand((DateTime.now - 3.months)..DateTime.now)
+    b.save!
+    t = Transaction.new
+    t.bottle = b
+    t.user = users[2]
     t.save!
   end
 end
