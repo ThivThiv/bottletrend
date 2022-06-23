@@ -38,6 +38,13 @@ user3 = User.create!(
   balance: 3000
 )
 
+puts 'Creating user Bottle'
+user4 = User.create!(
+  email: 'bottle@gmail.com',
+  password: 'password',
+  balance: 3000
+)
+
 puts "Creating domains Malartic Lagraviere..."
 file = URI.open('https://res.cloudinary.com/messa57fr/image/upload/v1655376345/domain-chateau-lamartic_aspzoe.jpg')
 malartic = Domain.new(
