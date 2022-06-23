@@ -21,21 +21,21 @@ puts 'Creating user 1'
 user1 = User.create!(
   email: 'user1@gmail.com',
   password: 'password',
-  balance: 3000
+  balance: 10000
 )
 
 puts 'Creating user 2'
 user2 = User.create!(
   email: 'user2@gmail.com',
   password: 'password',
-  balance: 3000
+  balance: 10000
 )
 
 puts 'Creating user 3'
 user3 = User.create!(
   email: 'user3@gmail.com',
   password: 'password',
-  balance: 3000
+  balance: 10000
 )
 
 puts 'Creating user Bottle'
@@ -141,18 +141,32 @@ b4 = Batch.new(
 b4.photo.attach(io: file, filename: "bottle-chateau-margaux.jpg", content_type: 'image/png')
 b4.save
 
-batches = [b1, b2, b3, b4]
+puts "Creating batch Chassagne Montrachet"
+file = URI.open("https://res.cloudinary.com/messa57fr/image/upload/v1655383734/chateau-margaux-2017-1er-cru-classe_bkszcq.png")
+b5 = Batch.new(
+  name: "Chateau Chassagne Montrachet",
+  quantity: 60,
+  initial_price: 125,
+  domain: margaux,
+  description: "Dominant sans grand mal toute l’appellation Margaux et d'une remarquable constance, Château Margaux produit des vins devenus mythiques tant le mariage rare de la finesse dans la densité, et de la fraîcheur dans l’opulence est réussi.",
+  year: 2009,
+  potential: 3,
+  region: "Bourgogne"
+)
+b5.photo.attach(io: file, filename: "bottle-chateau-margaux.jpg", content_type: 'image/png')
+b5.save
+
 users = [user1, user2, user3]
-200.times do
+57.times do
   b = Bottle.new()
-  batch = batches.sample
+  batch = Batch.find_by_name("Chateau Malartic Lagraviere")
   if batch.available_domain_stock > 0
     b.batch = batch
     b.created_at = rand((DateTime.now - 3.months)..DateTime.now)
     b.save!
     t = Transaction.new
     t.bottle = b
-    t.user = users.sample
+    t.user = users[0]
     t.save!
   end
 end
@@ -165,7 +179,7 @@ batch.available_domain_stock.times do
   b.save!
   t = Transaction.new
   t.bottle = b
-  t.user = users.last
+  t.user = users[1]
   t.save!
 end
 
