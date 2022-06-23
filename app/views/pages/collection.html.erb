@@ -109,7 +109,9 @@
                   </div>
                 </div>
 
+                <% total_ventes = 0 %>
                 <% @on_resale_bottles.each do |batch, qty| %>
+                <% total_ventes += batch.current_price * qty %>
                   <%= link_to batch_path(batch), class:"text-decoration-none" do %>
                     <div class="card-element">
                       <div class="card-avatar">
@@ -122,7 +124,7 @@
                       </div>
 
                       <div class="batch-card-total">
-                        <p><%= batch.initial_price * qty %>€</p>
+                        <p><%= batch.current_price * qty %>€</p>
                         <p>Quantité: <%= qty %></p>
                       </div>
 
@@ -133,6 +135,8 @@
                     </div>
                   <% end %>
                 <% end %>
+                <br>
+                <h3 class="text-end">Total: <%=number_with_delimiter(total_ventes, :delimiter => ',')%>€</h3>
               </div>
             </div>
           </div>
