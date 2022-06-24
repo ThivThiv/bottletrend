@@ -123,7 +123,7 @@
           </div>
         </div>
 
-        <% @private_bottles.each do |batch| %>
+        <% @private_bottles.keys.each do |batch| %>
             <%= link_to bottle_path(batch), class:"text-decoration-none" do %>
                 <% if batch.available_domain_stock == 0 %>
                   <div class="card-element">
